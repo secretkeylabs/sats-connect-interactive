@@ -1,0 +1,66 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { GetInscriptionsExample } from "../examples/GetInscriptionsExample";
+
+<H1>ord_getInscriptions</H1>
+
+<P>
+  Use the <code>ord_getInscriptions</code> method to retrieve a paginated list
+  of ordinal inscriptions owned by the connected wallet.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "offset",
+      type: "number",
+      required: true,
+      description: "The offset for pagination.",
+    },
+    {
+      name: "limit",
+      type: "number",
+      required: true,
+      description: "The maximum number of inscriptions to return.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<GetInscriptionsExample />
+
+<H2>Response</H2>
+
+<P>Returns an object with the inscriptions and pagination details:</P>
+
+<ParamTable
+  params={[
+    {
+      name: "total",
+      type: "number",
+      required: true,
+      description: "Total number of inscriptions.",
+    },
+    {
+      name: "offset",
+      type: "number",
+      required: true,
+      description: "Current offset.",
+    },
+    {
+      name: "limit",
+      type: "number",
+      required: true,
+      description: "Maximum items returned.",
+    },
+    {
+      name: "inscriptions",
+      type: "Inscription[]",
+      required: true,
+      description:
+        "Array of inscription objects with inscriptionId, address, and postage.",
+    },
+  ]}
+/>

@@ -1,0 +1,64 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { TransferRunesExample } from "../examples/TransferRunesExample";
+
+<H1>runes_transfer</H1>
+
+<P>
+  Use the <code>runes_transfer</code> method to transfer Runes tokens to one or
+  more recipients.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "recipients",
+      type: "Recipient[]",
+      required: true,
+      description: "Array of recipient objects.",
+    },
+  ]}
+/>
+
+<P>Each recipient object contains:</P>
+
+<ParamTable
+  params={[
+    {
+      name: "runeName",
+      type: "string",
+      required: true,
+      description: "The name of the Rune to transfer.",
+    },
+    {
+      name: "amount",
+      type: "string",
+      required: true,
+      description: "The amount to transfer.",
+    },
+    {
+      name: "address",
+      type: "string",
+      required: true,
+      description: "The recipient Bitcoin address.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<TransferRunesExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "txid",
+      type: "string",
+      required: true,
+      description: "The transaction ID.",
+    },
+  ]}
+/>

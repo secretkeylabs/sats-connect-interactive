@@ -34,10 +34,19 @@ const navigation: NavSection[] = [
   {
     title: "Bitcoin Methods",
     items: [
+      { label: "getInfo", href: "/bitcoin/get-info" },
+      { label: "getAddresses", href: "/bitcoin/get-addresses" },
+      { label: "getAccounts", href: "/bitcoin/get-accounts" },
       { label: "getBalance", href: "/bitcoin/get-balance" },
       { label: "sendTransfer", href: "/bitcoin/send-transfer" },
       { label: "signMessage", href: "/bitcoin/sign-message" },
       { label: "signPsbt", href: "/bitcoin/sign-psbt" },
+      { label: "ord_getInscriptions", href: "/bitcoin/get-inscriptions" },
+      { label: "ord_sendInscriptions", href: "/bitcoin/send-inscriptions" },
+      { label: "runes_getBalance", href: "/bitcoin/runes-get-balance" },
+      { label: "runes_transfer", href: "/bitcoin/runes-transfer" },
+      { label: "runes_mint", href: "/bitcoin/runes-mint" },
+      { label: "runes_etch", href: "/bitcoin/runes-etch" },
     ],
   },
   {
@@ -45,6 +54,11 @@ const navigation: NavSection[] = [
     items: [
       { label: "stx_transferStx", href: "/stacks/transfer-stx" },
       { label: "stx_signMessage", href: "/stacks/sign-message" },
+      { label: "stx_getAddresses", href: "/stacks/get-addresses" },
+      { label: "stx_getAccounts", href: "/stacks/get-accounts" },
+      { label: "stx_signTransaction", href: "/stacks/sign-transaction" },
+      { label: "stx_callContract", href: "/stacks/call-contract" },
+      { label: "stx_deployContract", href: "/stacks/deploy-contract" },
     ],
   },
   {
@@ -53,6 +67,8 @@ const navigation: NavSection[] = [
       { label: "spark_getBalance", href: "/spark/get-balance" },
       { label: "spark_transfer", href: "/spark/transfer" },
       { label: "spark_signMessage", href: "/spark/sign-message" },
+      { label: "spark_getAddresses", href: "/spark/get-addresses" },
+      { label: "spark_transferToken", href: "/spark/transfer-token" },
     ],
   },
   {
@@ -63,6 +79,16 @@ const navigation: NavSection[] = [
         label: "wallet_requestPermissions",
         href: "/wallet/request-permissions",
       },
+      { label: "wallet_getWalletType", href: "/wallet/get-wallet-type" },
+      {
+        label: "wallet_getCurrentPermissions",
+        href: "/wallet/get-current-permissions",
+      },
+      {
+        label: "wallet_renouncePermissions",
+        href: "/wallet/renounce-permissions",
+      },
+      { label: "wallet_getNetwork", href: "/wallet/get-network" },
     ],
   },
 ];

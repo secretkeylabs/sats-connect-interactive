@@ -1,0 +1,67 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { GetAccountsExample } from "../examples/GetAccountsExample";
+
+<H1>getAccounts</H1>
+
+<P>
+  Use the <code>getAccounts</code> method to request wallet account details for
+  specific purposes. Similar to <code>getAddresses</code> but returns additional
+  wallet type information.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "purposes",
+      type: "AddressPurpose[]",
+      required: true,
+      description:
+        "The purposes for which to retrieve accounts (Payment, Ordinals, Stacks).",
+    },
+    {
+      name: "message",
+      type: "string",
+      required: false,
+      description: "A message to display to the user in the request prompt.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<GetAccountsExample />
+
+<H2>Response</H2>
+
+<P>Returns an array of account objects, each containing:</P>
+
+<ParamTable
+  params={[
+    {
+      name: "address",
+      type: "string",
+      required: true,
+      description: "The wallet address.",
+    },
+    {
+      name: "publicKey",
+      type: "string",
+      required: true,
+      description: "The public key associated with the address.",
+    },
+    {
+      name: "purpose",
+      type: "AddressPurpose",
+      required: true,
+      description: "The purpose of the account.",
+    },
+    {
+      name: "walletType",
+      type: '"software" | "ledger" | "keystone"',
+      required: true,
+      description: "The wallet type for this account.",
+    },
+  ]}
+/>

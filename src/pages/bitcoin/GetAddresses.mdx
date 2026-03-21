@@ -1,0 +1,70 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { GetAddressesExample } from "../examples/GetAddressesExample";
+
+<H1>getAddresses</H1>
+
+<P>
+  Use the <code>getAddresses</code> method to request wallet addresses for
+  specific purposes like payment, ordinals, or Stacks. The wallet will prompt
+  the user to share their addresses.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "purposes",
+      type: "AddressPurpose[]",
+      required: true,
+      description:
+        "The purposes for which to generate addresses (Payment, Ordinals, Stacks).",
+    },
+    {
+      name: "message",
+      type: "string",
+      required: false,
+      description: "A message to display to the user in the request prompt.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<GetAddressesExample />
+
+<H2>Response</H2>
+
+<P>
+  Returns an object with an <code>addresses</code> array, where each address
+  includes:
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "address",
+      type: "string",
+      required: true,
+      description: "The wallet address.",
+    },
+    {
+      name: "publicKey",
+      type: "string",
+      required: true,
+      description: "The public key associated with the address.",
+    },
+    {
+      name: "purpose",
+      type: "AddressPurpose",
+      required: true,
+      description: "The purpose of the address.",
+    },
+    {
+      name: "addressType",
+      type: "AddressType",
+      required: true,
+      description: "The address type (e.g. p2wpkh, p2tr).",
+    },
+  ]}
+/>

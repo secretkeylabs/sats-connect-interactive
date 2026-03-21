@@ -1,0 +1,44 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { GetNetworkExample } from "../examples/GetNetworkExample";
+
+<H1>wallet_getNetwork</H1>
+
+<P>
+  Use the <code>wallet_getNetwork</code> method to retrieve the currently
+  selected network configuration for Bitcoin, Stacks, and Spark.
+</P>
+
+<Callout type="info">
+  Your app must first be connected to the wallet. No parameters are required.
+</Callout>
+
+<H2>Try it</H2>
+
+<GetNetworkExample />
+
+<H2>Response</H2>
+
+<P>Returns an object with the network names for each chain:</P>
+
+<ParamTable
+  params={[
+    {
+      name: "bitcoin.name",
+      type: "BitcoinNetworkType",
+      required: true,
+      description: "The Bitcoin network (Mainnet, Testnet, Signet, Regtest).",
+    },
+    {
+      name: "stacks.name",
+      type: "StacksNetworkType",
+      required: true,
+      description: "The Stacks network (mainnet, testnet, devnet).",
+    },
+    {
+      name: "spark.name",
+      type: "SparkNetworkType",
+      required: true,
+      description: "The Spark network.",
+    },
+  ]}
+/>

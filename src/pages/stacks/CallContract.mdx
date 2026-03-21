@@ -1,0 +1,63 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { StxCallContractExample } from "../examples/StxCallContractExample";
+
+<H1>stx_callContract</H1>
+
+<P>
+  Use the <code>stx_callContract</code> method to call a function on a deployed
+  Stacks smart contract. The wallet will prompt the user to sign and broadcast
+  the transaction.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "contract",
+      type: "string",
+      required: true,
+      description: 'The contract principal (e.g. "SP000...78.contract-name").',
+    },
+    {
+      name: "functionName",
+      type: "string",
+      required: true,
+      description: "The name of the function to call.",
+    },
+    {
+      name: "arguments",
+      type: "string[]",
+      required: false,
+      description: "Hex-encoded Clarity values as function arguments.",
+    },
+  ]}
+/>
+
+<Callout type="tip">
+  To convert Clarity values to hex, use the <code>cvToHex</code> helper from the{" "}
+  <code>@stacks/transactions</code> package.
+</Callout>
+
+<H2>Try it</H2>
+
+<StxCallContractExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "txid",
+      type: "string",
+      required: true,
+      description: "The transaction ID.",
+    },
+    {
+      name: "transaction",
+      type: "string",
+      required: true,
+      description: "The signed transaction as a hex-encoded string.",
+    },
+  ]}
+/>

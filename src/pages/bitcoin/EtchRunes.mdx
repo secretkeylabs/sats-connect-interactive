@@ -1,0 +1,88 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { EtchRunesExample } from "../examples/EtchRunesExample";
+
+<H1>runes_etch</H1>
+
+<P>
+  Use the <code>runes_etch</code> method to create (etch) a new Rune on the
+  Bitcoin blockchain. This defines the Rune's properties including name, symbol,
+  and minting terms.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "runeName",
+      type: "string",
+      required: true,
+      description: "The name of the Rune to create.",
+    },
+    {
+      name: "isMintable",
+      type: "boolean",
+      required: true,
+      description: "Whether the Rune can be minted after creation.",
+    },
+    {
+      name: "destinationAddress",
+      type: "string",
+      required: true,
+      description: "The ordinals address to receive the etched Rune.",
+    },
+    {
+      name: "refundAddress",
+      type: "string",
+      required: true,
+      description: "The payment address for refunds.",
+    },
+    {
+      name: "feeRate",
+      type: "number",
+      required: true,
+      description: "The fee rate in sats/vB.",
+    },
+    {
+      name: "symbol",
+      type: "string",
+      required: false,
+      description: "A symbol for the Rune (e.g. 'R').",
+    },
+    {
+      name: "terms",
+      type: "{ amount: string, cap: string }",
+      required: false,
+      description: "Mint terms: amount per mint and total supply cap.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<EtchRunesExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "orderId",
+      type: "string",
+      required: true,
+      description: "The order ID for the etch.",
+    },
+    {
+      name: "fundTransactionId",
+      type: "string",
+      required: true,
+      description: "The funding transaction ID.",
+    },
+    {
+      name: "fundingAddress",
+      type: "string",
+      required: true,
+      description: "The funding address.",
+    },
+  ]}
+/>

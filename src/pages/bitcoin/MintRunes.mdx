@@ -1,0 +1,75 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { MintRunesExample } from "../examples/MintRunesExample";
+
+<H1>runes_mint</H1>
+
+<P>
+  Use the <code>runes_mint</code> method to mint Runes tokens. This creates a
+  funding transaction to mint a specified Rune.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "runeName",
+      type: "string",
+      required: true,
+      description: "The name of the Rune to mint.",
+    },
+    {
+      name: "destinationAddress",
+      type: "string",
+      required: true,
+      description: "The ordinals address to receive the minted Runes.",
+    },
+    {
+      name: "refundAddress",
+      type: "string",
+      required: true,
+      description: "The payment address for refunds.",
+    },
+    {
+      name: "feeRate",
+      type: "number",
+      required: true,
+      description: "The fee rate in sats/vB.",
+    },
+    {
+      name: "repeats",
+      type: "number",
+      required: true,
+      description: "Number of mint transactions.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<MintRunesExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "orderId",
+      type: "string",
+      required: true,
+      description: "The order ID for the mint.",
+    },
+    {
+      name: "fundTransactionId",
+      type: "string",
+      required: true,
+      description: "The funding transaction ID.",
+    },
+    {
+      name: "fundingAddress",
+      type: "string",
+      required: true,
+      description: "The funding address.",
+    },
+  ]}
+/>

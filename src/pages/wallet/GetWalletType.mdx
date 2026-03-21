@@ -1,0 +1,25 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { GetWalletTypeExample } from "../examples/GetWalletTypeExample";
+
+<H1>wallet_getWalletType</H1>
+
+<P>
+  Use the <code>wallet_getWalletType</code> method to determine the type of
+  wallet the user is using — whether it's a software wallet, Ledger hardware
+  wallet, or Keystone hardware wallet.
+</P>
+
+<Callout type="info">
+  Your app must first be connected to the wallet. No parameters are required.
+</Callout>
+
+<H2>Try it</H2>
+
+<GetWalletTypeExample />
+
+<H2>Response</H2>
+
+<P>
+  Returns one of: <code>"software"</code>, <code>"ledger"</code>, or{" "}
+  <code>"keystone"</code>.
+</P>

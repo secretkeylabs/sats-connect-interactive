@@ -1,0 +1,23 @@
+import { H1, H2, P, Callout } from "../../components/Mdx/Mdx";
+import { RenouncePermissionsExample } from "../examples/RenouncePermissionsExample";
+
+<H1>wallet_renouncePermissions</H1>
+
+<P>
+  Use the <code>wallet_renouncePermissions</code> method to voluntarily give up
+  all permissions your app currently has from the connected wallet. This
+  effectively resets the connection state.
+</P>
+
+<Callout type="info">
+  No parameters are required. After renouncing, your app will need to request
+  permissions again to access wallet data.
+</Callout>
+
+<H2>Try it</H2>
+
+<RenouncePermissionsExample />
+
+<H2>Response</H2>
+
+<P>Returns null on success.</P>

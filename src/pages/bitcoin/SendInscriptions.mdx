@@ -1,0 +1,59 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { SendInscriptionsExample } from "../examples/SendInscriptionsExample";
+
+<H1>ord_sendInscriptions</H1>
+
+<P>
+  Use the <code>ord_sendInscriptions</code> method to send ordinal inscriptions
+  from the connected wallet to a recipient address.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "transfers",
+      type: "Transfer[]",
+      required: true,
+      description:
+        "Array of transfer objects, each with an address and inscriptionId.",
+    },
+  ]}
+/>
+
+<P>Each transfer object contains:</P>
+
+<ParamTable
+  params={[
+    {
+      name: "address",
+      type: "string",
+      required: true,
+      description: "The recipient Bitcoin address.",
+    },
+    {
+      name: "inscriptionId",
+      type: "string",
+      required: true,
+      description: "The ID of the inscription to send.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<SendInscriptionsExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "txid",
+      type: "string",
+      required: true,
+      description: "The transaction ID of the transfer.",
+    },
+  ]}
+/>

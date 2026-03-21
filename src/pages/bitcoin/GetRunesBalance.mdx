@@ -1,0 +1,58 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { GetRunesBalanceExample } from "../examples/GetRunesBalanceExample";
+
+<H1>runes_getBalance</H1>
+
+<P>
+  Use the <code>runes_getBalance</code> method to retrieve the Runes token
+  balances held by the connected wallet.
+</P>
+
+<Callout type="info">
+  Your app must first be connected to the wallet. No parameters are required.
+</Callout>
+
+<H2>Try it</H2>
+
+<GetRunesBalanceExample />
+
+<H2>Response</H2>
+
+<P>
+  Returns an object with a <code>balances</code> array. Each balance includes:
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "runeName",
+      type: "string",
+      required: true,
+      description: "The name of the Rune.",
+    },
+    {
+      name: "amount",
+      type: "string",
+      required: true,
+      description: "The balance amount.",
+    },
+    {
+      name: "divisibility",
+      type: "number",
+      required: true,
+      description: "The number of decimal places for the Rune.",
+    },
+    {
+      name: "symbol",
+      type: "string",
+      required: true,
+      description: "The symbol of the Rune.",
+    },
+    {
+      name: "spendableBalance",
+      type: "string",
+      required: true,
+      description: "The spendable balance.",
+    },
+  ]}
+/>

@@ -1,0 +1,60 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { StxSignTransactionExample } from "../examples/StxSignTransactionExample";
+
+<H1>stx_signTransaction</H1>
+
+<P>
+  Use the <code>stx_signTransaction</code> method to sign a Stacks transaction.
+  The transaction should be provided as a hex-encoded string. Optionally, the
+  wallet can broadcast it after signing.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "transaction",
+      type: "string",
+      required: true,
+      description: "The unsigned Stacks transaction as a hex-encoded string.",
+    },
+    {
+      name: "pubkey",
+      type: "string",
+      required: false,
+      description:
+        "The public key to sign with. The wallet may use any key when not provided.",
+    },
+    {
+      name: "broadcast",
+      type: "boolean",
+      required: false,
+      description: "Whether to broadcast after signing. Defaults to true.",
+    },
+  ]}
+/>
+
+<Callout type="tip">
+  You can construct unsigned transactions using the{" "}
+  <code>@stacks/transactions</code> package with functions like{" "}
+  <code>makeUnsignedSTXTokenTransfer</code> or{" "}
+  <code>makeUnsignedContractCall</code>.
+</Callout>
+
+<H2>Try it</H2>
+
+<StxSignTransactionExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "transaction",
+      type: "string",
+      required: true,
+      description: "The signed transaction as a hex-encoded string.",
+    },
+  ]}
+/>

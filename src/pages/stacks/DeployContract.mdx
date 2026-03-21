@@ -1,0 +1,58 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { StxDeployContractExample } from "../examples/StxDeployContractExample";
+
+<H1>stx_deployContract</H1>
+
+<P>
+  Use the <code>stx_deployContract</code> method to deploy a Clarity smart
+  contract to the Stacks blockchain. The wallet will prompt the user to sign and
+  broadcast the deployment transaction.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "name",
+      type: "string",
+      required: true,
+      description: "The name for the contract.",
+    },
+    {
+      name: "clarityCode",
+      type: "string",
+      required: true,
+      description: "The Clarity source code of the contract.",
+    },
+    {
+      name: "clarityVersion",
+      type: "number",
+      required: false,
+      description: "The version of Clarity to use.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<StxDeployContractExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "txid",
+      type: "string",
+      required: true,
+      description: "The deployment transaction ID.",
+    },
+    {
+      name: "transaction",
+      type: "string",
+      required: true,
+      description: "The signed transaction as a hex-encoded string.",
+    },
+  ]}
+/>

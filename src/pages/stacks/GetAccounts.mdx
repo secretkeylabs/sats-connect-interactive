@@ -1,0 +1,54 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { StxGetAccountsExample } from "../examples/StxGetAccountsExample";
+
+<H1>stx_getAccounts</H1>
+
+<P>
+  Use the <code>stx_getAccounts</code> method to retrieve the Stacks account
+  details from the connected wallet, including addresses and Gaia hub
+  information.
+</P>
+
+<Callout type="info">
+  Your app must first be connected to the wallet. No parameters are required.
+</Callout>
+
+<H2>Try it</H2>
+
+<StxGetAccountsExample />
+
+<H2>Response</H2>
+
+<P>
+  Returns an object with an <code>addresses</code> array and network
+  information:
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "address",
+      type: "string",
+      required: true,
+      description: "The Stacks address.",
+    },
+    {
+      name: "publicKey",
+      type: "string",
+      required: true,
+      description: "The public key.",
+    },
+    {
+      name: "gaiaHubUrl",
+      type: "string",
+      required: true,
+      description: "The Gaia hub URL for decentralized storage.",
+    },
+    {
+      name: "gaiaAppKey",
+      type: "string",
+      required: true,
+      description: "The Gaia app key.",
+    },
+  ]}
+/>

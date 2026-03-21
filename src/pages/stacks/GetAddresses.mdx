@@ -1,0 +1,41 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { StxGetAddressesExample } from "../examples/StxGetAddressesExample";
+
+<H1>stx_getAddresses</H1>
+
+<P>
+  Use the <code>stx_getAddresses</code> method to retrieve the Stacks addresses
+  from the connected wallet.
+</P>
+
+<Callout type="info">
+  Your app must first be connected to the wallet. No parameters are required.
+</Callout>
+
+<H2>Try it</H2>
+
+<StxGetAddressesExample />
+
+<H2>Response</H2>
+
+<P>
+  Returns an object with an <code>addresses</code> array containing Stacks
+  address details:
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "address",
+      type: "string",
+      required: true,
+      description: "The Stacks address.",
+    },
+    {
+      name: "publicKey",
+      type: "string",
+      required: true,
+      description: "The public key associated with the address.",
+    },
+  ]}
+/>

@@ -1,0 +1,49 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { GetCurrentPermissionsExample } from "../examples/GetCurrentPermissionsExample";
+
+<H1>wallet_getCurrentPermissions</H1>
+
+<P>
+  Use the <code>wallet_getCurrentPermissions</code> method to check what
+  permissions your app currently has from the connected wallet.
+</P>
+
+<Callout type="info">
+  Your app must first be connected to the wallet. No parameters are required.
+</Callout>
+
+<H2>Try it</H2>
+
+<GetCurrentPermissionsExample />
+
+<H2>Response</H2>
+
+<P>
+  Returns an array of permission objects. Each permission has a type (
+  <code>"account"</code> or <code>"wallet"</code>) and describes what actions
+  are allowed:
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "type",
+      type: '"account" | "wallet"',
+      required: true,
+      description: "The type of permission.",
+    },
+    {
+      name: "resourceId",
+      type: "string",
+      required: true,
+      description: "The resource the permission applies to.",
+    },
+    {
+      name: "actions",
+      type: "object",
+      required: true,
+      description:
+        "The allowed actions (e.g. read for accounts, readNetwork for wallet).",
+    },
+  ]}
+/>

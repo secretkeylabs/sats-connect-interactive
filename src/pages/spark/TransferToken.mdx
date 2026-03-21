@@ -1,0 +1,53 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { SparkTransferTokenExample } from "../examples/SparkTransferTokenExample";
+
+<H1>spark_transferToken</H1>
+
+<P>
+  Use the <code>spark_transferToken</code> method to transfer a token on the
+  Spark layer. This is different from <code>spark_transfer</code> which
+  transfers BTC — this method transfers specific tokens identified by a Bech32m
+  token identifier.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "tokenIdentifier",
+      type: "string",
+      required: true,
+      description: "The Bech32m token identifier.",
+    },
+    {
+      name: "tokenAmount",
+      type: "number | string",
+      required: true,
+      description: "Amount of token units to transfer.",
+    },
+    {
+      name: "receiverSparkAddress",
+      type: "string",
+      required: true,
+      description: "The recipient's Spark address.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<SparkTransferTokenExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "id",
+      type: "string",
+      required: true,
+      description: "The ID of the transfer transaction.",
+    },
+  ]}
+/>
