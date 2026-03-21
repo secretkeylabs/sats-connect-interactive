@@ -1,0 +1,52 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { SendTransferExample } from "../examples/SendTransferExample";
+
+<H1>sendTransfer</H1>
+
+<P>
+  Use the <code>sendTransfer</code> method to request a transfer of Bitcoin to
+  one or more recipients from the user's wallet. The user will be prompted to
+  review the transaction, including recipients, amounts, and the desired
+  transaction fee.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "recipients",
+      type: "Array<{ address: string; amount: number }>",
+      required: true,
+      description:
+        "Array of recipient objects, each with a Bitcoin address and an amount in satoshis.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<SendTransferExample />
+
+<H2>Response</H2>
+
+<P>
+  On success, <code>sendTransfer</code> returns a result object containing the
+  transaction ID:
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "txid",
+      type: "string",
+      required: true,
+      description: "The transaction ID of the broadcasted transfer.",
+    },
+  ]}
+/>
+
+<Callout type="warning">
+  This method will prompt the user to sign and broadcast a real Bitcoin
+  transaction. Make sure to double-check addresses and amounts before sending.
+</Callout>

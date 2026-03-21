@@ -1,0 +1,56 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { TransferStxExample } from "../examples/TransferStxExample";
+
+<H1>stx_transferStx</H1>
+
+<P>
+  Use the <code>stx_transferStx</code> method to request a transfer of STX
+  tokens from the user's Stacks wallet to a recipient address.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "recipient",
+      type: "string",
+      required: true,
+      description: "The Stacks address to send STX to.",
+    },
+    {
+      name: "amount",
+      type: "number",
+      required: true,
+      description: "Amount in micro-STX (1 STX = 1,000,000 uSTX).",
+    },
+    {
+      name: "memo",
+      type: "string",
+      required: false,
+      description: "Optional memo to attach to the transaction.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<TransferStxExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "txid",
+      type: "string",
+      required: true,
+      description: "The Stacks transaction ID.",
+    },
+  ]}
+/>
+
+<Callout type="tip">
+  Stacks amounts are denominated in micro-STX. To send 1 STX, set the amount to
+  1,000,000.
+</Callout>

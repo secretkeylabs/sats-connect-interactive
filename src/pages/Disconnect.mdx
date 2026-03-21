@@ -1,0 +1,54 @@
+import { H1, H2, P, Callout } from "../components/Mdx/Mdx";
+import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+
+<H1>Disconnect Wallet</H1>
+
+<P>
+  To disconnect your app from the user's wallet, use the{" "}
+  <code>wallet_renouncePermissions</code> method. This revokes all permissions
+  previously granted by the user.
+</P>
+
+<CodeBlock
+  code={`import Wallet from 'sats-connect';
+
+// Disconnect from the wallet
+await Wallet.disconnect();`}
+lang="typescript"
+title="Disconnect"
+/>
+
+<Callout type="info">
+  After disconnecting, your app will need to request a new connection via{" "}
+  <code>wallet_connect</code> before making any further requests.
+</Callout>
+
+<H2>How it works</H2>
+
+<P>
+  Calling <code>Wallet.disconnect()</code> internally calls{" "}
+  <code>wallet_renouncePermissions</code> and clears the stored provider ID.
+  This ensures a clean disconnection.
+</P>
+
+<P>
+  Users can also disconnect directly from their wallet UI. Your app should
+  listen for the <code>disconnect</code> event to handle this case gracefully:
+</P>
+
+<CodeBlock
+  code={`import Wallet from 'sats-connect';
+
+const removeListener = Wallet.addListener({
+eventName: 'disconnect',
+cb: (event) => {
+console.log('Wallet disconnected:', event);
+// Clear your app state, redirect to connect page, etc.
+},
+});
+
+// Later, to stop listening:
+removeListener();`}
+lang="typescript"
+title="Listen for disconnection"
+/>

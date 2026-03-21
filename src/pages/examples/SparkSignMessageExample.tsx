@@ -1,0 +1,98 @@
+import { createSignal, type Component, Show } from "solid-js";
+import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
+import * as s from "../../components/InteractiveExample/InteractiveExample.css";
+
+const CODE = `import { request, RpcErrorCode } from 'sats-connect';
+
+const response = await request('spark_signMessage', {
+  message: 'Hello from Spark!',
+  publicKey: sparkPublicKey,
+  protocol: 'ECDSA',
+});
+
+if (response.status === 'success') {
+  console.log('Signature:', response.result.signature);
+} else {
+  if (response.error.code === RpcErrorCode.USER_REJECTION) {
+    console.log('User cancelled the request');
+  } else {
+    console.error('Error:', response.error);
+  }
+}`;
+
+export const SparkSignMessageExample: Component = () => {
+  const [message, setMessage] = createSignal("Hello from Spark!");
+  const [publicKey, setPublicKey] = createSignal("");
+  const [result, setResult] = createSignal<string | null>(null);
+  const [error, setError] = createSignal<string | null>(null);
+
+  const handleSign = async () => {
+    setResult(null);
+    setError(null);
+
+    try {
+      const { request } = await import("sats-connect");
+      const response = await request("spark_signMessage", {
+        message: message(),
+        publicKey: publicKey(),
+        protocol: "ECDSA",
+      });
+
+      if (response.status === "success") {
+        setResult(JSON.stringify(response.result, null, 2));
+      } else {
+        setError(JSON.stringify(response.error, null, 2));
+      }
+    } catch (err) {
+      setError(
+        `Wallet not available. Install a compatible wallet extension to try this example.\n\n${err}`,
+      );
+    }
+  };
+
+  return (
+    <InteractiveExample
+      method="spark_signMessage"
+      title="Spark Sign Message"
+      code={CODE}
+    >
+      <div class={s.fieldGroup}>
+        <label class={s.fieldLabel}>Message</label>
+        <input
+          class={s.input}
+          type="text"
+          value={message()}
+          onInput={(e) => setMessage(e.currentTarget.value)}
+          placeholder="Message to sign"
+        />
+      </div>
+
+      <div class={s.fieldGroup}>
+        <label class={s.fieldLabel}>Spark public key</label>
+        <input
+          class={s.input}
+          type="text"
+          value={publicKey()}
+          onInput={(e) => setPublicKey(e.currentTarget.value)}
+          placeholder="Your Spark public key"
+        />
+      </div>
+
+      <button
+        class={s.button}
+        onClick={handleSign}
+        disabled={!message() || !publicKey()}
+      >
+        Sign Message
+      </button>
+
+      <Show when={result()}>
+        <div class={`${s.resultArea} ${s.resultSuccess}`}>{result()}</div>
+      </Show>
+
+      <Show when={error()}>
+        <div class={`${s.resultArea} ${s.resultError}`}>{error()}</div>
+      </Show>
+    </InteractiveExample>
+  );
+};

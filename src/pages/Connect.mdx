@@ -1,0 +1,85 @@
+import { H1, H2, P, Callout, ParamTable } from "../components/Mdx/Mdx";
+import { ConnectExample } from "./examples/ConnectExample";
+
+<H1>Connect Wallet</H1>
+
+<P>
+  An app can connect to the user's wallet using <code>wallet_connect</code>.
+  This method grants read permissions on the account selected by the user and
+  returns commonly used data about the account, such as addresses and current
+  network.
+</P>
+
+<Callout type="info">
+  If the user has already granted permissions, no connection request popup will
+  appear, ensuring a smooth user experience.
+</Callout>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "addresses",
+      type: "AddressPurpose[]",
+      required: false,
+      description:
+        "Which wallet addresses you require: 'payment', 'ordinals', 'stacks', 'spark', 'starknet'.",
+    },
+    {
+      name: "message",
+      type: "string",
+      required: false,
+      description:
+        "A custom connection message to display to the user. Max 80 characters.",
+    },
+    {
+      name: "network",
+      type: "BitcoinNetworkType",
+      required: false,
+      description:
+        "The network the wallet should use to connect: 'Mainnet' or 'Testnet'.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<ConnectExample />
+
+<H2>Response</H2>
+
+<P>
+  On success, <code>wallet_connect</code> returns an object containing the
+  user's wallet addresses, account ID, wallet type, and network information.
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "id",
+      type: "string",
+      required: true,
+      description: "Unique account identifier.",
+    },
+    {
+      name: "addresses",
+      type: "Address[]",
+      required: true,
+      description:
+        "Array of address objects with address, publicKey, purpose, and addressType fields.",
+    },
+    {
+      name: "walletType",
+      type: "string",
+      required: true,
+      description: "The type of wallet, e.g. 'software'.",
+    },
+    {
+      name: "network",
+      type: "object",
+      required: true,
+      description: "Network configuration for Bitcoin and Stacks.",
+    },
+  ]}
+/>

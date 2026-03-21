@@ -1,0 +1,64 @@
+import { H1, H2, H3, P, Callout } from "../components/Mdx/Mdx";
+
+<H1>Wallet Providers</H1>
+
+<P>
+  Sats Connect lets your app connect with a variety of Bitcoin, Spark, Starknet
+  & Stacks wallets:
+</P>
+
+- The <a href="https://www.xverse.app/" target="_blank">Xverse</a> browser extension and mobile in-app browser
+- The Unisat browser extension
+- 🔜 Any Bitcoin wallet which follows the <a href="https://wbips.netlify.app/wbips/WBIP004" target="_blank">WBIP004</a> standard
+- 🔜 Support for more Bitcoin, Spark, Stacks & Starknet wallets coming soon
+
+<P>
+  When installed in your user's browser, the wallets listed above inject a
+  wallet provider into the <code>window</code> of your application. Sats Connect
+  detects the wallet provider and lets your app interact with it via the{" "}
+  <code>Wallet</code> component and <code>Wallet.request</code> methods.
+</P>
+
+<H2>Xverse Wallet Provider</H2>
+
+<P>
+  <a href="https://www.xverse.app/" target="_blank">
+    Xverse
+  </a>
+  's browser extension and mobile in-app browser will inject an{" "}
+  <code>XverseProviders</code> object into the <code>window</code> of your
+  application.
+</P>
+
+<P>
+  The <code>XverseProviders</code> interface exposes two sets of methods:
+</P>
+
+- **Standard methods** which can be invoked with <code>Wallet.request</code>
+- **Xverse custom methods**, which can only be invoked for users using the Xverse wallet
+
+<H2>Unisat Wallet Provider</H2>
+
+<P>
+  The Unisat browser extension injects a <code>window.unisat</code> object into
+  the <code>window</code> of your application. Sats Connect lets you interact
+  with the Unisat wallet provider via the standard <code>Wallet.request</code>{" "}
+  methods.
+</P>
+
+<H2>🔜 WBIP004 Web Providers</H2>
+
+<P>
+  Sats Connect will soon detect wallet extensions that inject their provider
+  information under <code>window.btc_providers</code>, following the{" "}
+  <a href="https://wbips.netlify.app/wbips/WBIP004" target="_blank">
+    WBIP004
+  </a>{" "}
+  standard, and let you interact with them via the standard{" "}
+  <code>Wallet.request</code> methods.
+</P>
+
+<Callout type="info">
+  If no wallet extension is detected, Sats Connect will show a wallet selection
+  prompt guiding the user to install a supported wallet.
+</Callout>

@@ -1,0 +1,46 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { GetAccountExample } from "../examples/GetAccountExample";
+
+<H1>wallet_getAccount</H1>
+
+<P>
+  Use the <code>wallet_getAccount</code> method to retrieve account information
+  for the currently connected wallet. This includes the account ID, wallet type,
+  and all associated addresses.
+</P>
+
+<Callout type="info">
+  This method requires the user to have previously connected their wallet to
+  your app. If the app doesn't have permissions, you'll receive an{" "}
+  <code>ACCESS_DENIED</code> error.
+</Callout>
+
+<H2>Try it</H2>
+
+<GetAccountExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "id",
+      type: "string",
+      required: true,
+      description: "Unique identifier for the connected account.",
+    },
+    {
+      name: "walletType",
+      type: "string",
+      required: true,
+      description: "Type of wallet, e.g. 'software'.",
+    },
+    {
+      name: "addresses",
+      type: "Address[]",
+      required: true,
+      description:
+        "Array of address objects with address, publicKey, purpose, addressType, and network fields.",
+    },
+  ]}
+/>

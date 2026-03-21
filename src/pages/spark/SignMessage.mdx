@@ -1,0 +1,52 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { SparkSignMessageExample } from "../examples/SparkSignMessageExample";
+
+<H1>spark_signMessage</H1>
+
+<P>
+  Use the <code>spark_signMessage</code> method to sign a message with the
+  user's Spark key. This can be used for authentication or identity verification
+  on Spark.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "message",
+      type: "string",
+      required: true,
+      description: "The message to sign.",
+    },
+    {
+      name: "publicKey",
+      type: "string",
+      required: true,
+      description: "The user's Spark public key.",
+    },
+    {
+      name: "protocol",
+      type: "'ECDSA'",
+      required: false,
+      description: "Signing protocol. Currently only ECDSA is supported.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<SparkSignMessageExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "signature",
+      type: "string",
+      required: true,
+      description: "The message signature.",
+    },
+  ]}
+/>

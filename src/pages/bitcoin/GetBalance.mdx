@@ -1,0 +1,54 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { GetBalanceExample } from "../examples/GetBalanceExample";
+
+<H1>getBalance</H1>
+
+<P>
+  Use the <code>getBalance</code> method to retrieve your user's Bitcoin balance
+  — the amount of BTC that their connected wallet's Bitcoin payment address
+  holds.
+</P>
+
+<Callout type="info">
+  Your app must first be connected to the wallet and have account read
+  permissions. No query parameters are required.
+</Callout>
+
+<H2>Try it</H2>
+
+<GetBalanceExample />
+
+<H2>Response</H2>
+
+<P>
+  The <code>getBalance</code> method returns an object representing the
+  connected wallet's payment address BTC holdings:
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "confirmed",
+      type: "string",
+      required: true,
+      description: "Confirmed balance in satoshis.",
+    },
+    {
+      name: "unconfirmed",
+      type: "string",
+      required: true,
+      description: "Unconfirmed balance in satoshis.",
+    },
+    {
+      name: "total",
+      type: "string",
+      required: true,
+      description: "Total balance (confirmed + unconfirmed) in satoshis.",
+    },
+  ]}
+/>
+
+<Callout type="tip">
+  This method does not trigger any wallet prompt or signing request. It simply
+  reads the balance from the connected account.
+</Callout>

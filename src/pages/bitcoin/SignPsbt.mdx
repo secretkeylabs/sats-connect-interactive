@@ -1,0 +1,69 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { SignPsbtExample } from "../examples/SignPsbtExample";
+
+<H1>signPsbt</H1>
+
+<P>
+  Use the <code>signPsbt</code> method to request the user to sign a Partially
+  Signed Bitcoin Transaction (PSBT). This is the most versatile method for
+  constructing custom Bitcoin transactions.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "psbt",
+      type: "string",
+      required: true,
+      description: "Base64-encoded PSBT to sign.",
+    },
+    {
+      name: "signInputs",
+      type: "Record<string, number[]>",
+      required: true,
+      description:
+        "Map of address to array of input indices that address should sign.",
+    },
+    {
+      name: "broadcast",
+      type: "boolean",
+      required: false,
+      description:
+        "If true, the signed transaction will be broadcast to the network. Defaults to false.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<SignPsbtExample />
+
+<H2>Response</H2>
+
+<P>
+  On success, <code>signPsbt</code> returns:
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "psbt",
+      type: "string",
+      required: true,
+      description: "The signed PSBT in Base64 encoding.",
+    },
+    {
+      name: "txid",
+      type: "string",
+      required: false,
+      description: "Transaction ID, only present when broadcast is true.",
+    },
+  ]}
+/>
+
+<Callout type="warning">
+  Make sure you construct a valid PSBT before requesting a signature. The wallet
+  will reject malformed PSBTs.
+</Callout>

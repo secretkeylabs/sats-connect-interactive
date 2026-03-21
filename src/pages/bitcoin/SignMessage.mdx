@@ -1,0 +1,69 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { SignMessageExample } from "../examples/SignMessageExample";
+
+<H1>signMessage</H1>
+
+<P>
+  Use the <code>signMessage</code> method to request the user to sign a message
+  with their wallet's Bitcoin address. This is commonly used for authentication,
+  identity verification, or proof-of-ownership.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "address",
+      type: "string",
+      required: true,
+      description: "The Bitcoin address to sign with.",
+    },
+    {
+      name: "message",
+      type: "string",
+      required: true,
+      description: "The message to sign.",
+    },
+    {
+      name: "protocol",
+      type: "'ECDSA' | 'BIP322'",
+      required: false,
+      description:
+        "Signing protocol. Defaults to ECDSA. Use BIP322 for taproot addresses.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<SignMessageExample />
+
+<H2>Response</H2>
+
+<P>
+  On success, <code>signMessage</code> returns the signature and message hash:
+</P>
+
+<ParamTable
+  params={[
+    {
+      name: "signature",
+      type: "string",
+      required: true,
+      description: "The message signature.",
+    },
+    {
+      name: "messageHash",
+      type: "string",
+      required: true,
+      description: "Hash of the signed message.",
+    },
+  ]}
+/>
+
+<Callout type="tip">
+  Use <strong>ECDSA</strong> for legacy and SegWit addresses. Use{" "}
+  <strong>BIP322</strong> for taproot (P2TR) addresses. The wallet user will see
+  the message content before approving the signing request.
+</Callout>

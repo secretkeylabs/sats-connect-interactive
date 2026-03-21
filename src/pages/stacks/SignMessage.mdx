@@ -1,0 +1,46 @@
+import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { StacksSignMessageExample } from "../examples/StacksSignMessageExample";
+
+<H1>stx_signMessage</H1>
+
+<P>
+  Use the <code>stx_signMessage</code> method to request the user to sign a
+  message with their Stacks address. This is useful for authentication and
+  proof-of-ownership.
+</P>
+
+<H2>Parameters</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "message",
+      type: "string",
+      required: true,
+      description: "The message to sign.",
+    },
+  ]}
+/>
+
+<H2>Try it</H2>
+
+<StacksSignMessageExample />
+
+<H2>Response</H2>
+
+<ParamTable
+  params={[
+    {
+      name: "signature",
+      type: "string",
+      required: true,
+      description: "The message signature.",
+    },
+    {
+      name: "publicKey",
+      type: "string",
+      required: true,
+      description: "The public key used for signing.",
+    },
+  ]}
+/>
