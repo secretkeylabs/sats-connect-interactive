@@ -1,18 +1,7 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
-
-const CODE = `import { request } from 'sats-connect';
-
-const response = await request('getBalance', undefined);
-
-if (response.status === 'success') {
-  console.log('Confirmed:', response.result.confirmed);
-  console.log('Unconfirmed:', response.result.unconfirmed);
-  console.log('Total:', response.result.total);
-} else {
-  console.error('Error:', response.error);
-}`;
+import CODE from "./snippets/get-balance.ts?raw";
 
 export const GetBalanceExample: Component = () => {
   const [result, setResult] = createSignal<string | null>(null);

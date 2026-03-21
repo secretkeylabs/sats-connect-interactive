@@ -1,27 +1,7 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
-
-const CODE = `import { request, RpcErrorCode } from 'sats-connect';
-
-const response = await request('sendTransfer', {
-  recipients: [
-    {
-      address: recipientAddress,
-      amount: amountInSats,
-    },
-  ],
-});
-
-if (response.status === 'success') {
-  console.log('Transaction ID:', response.result.txid);
-} else {
-  if (response.error.code === RpcErrorCode.USER_REJECTION) {
-    console.log('User cancelled the request');
-  } else {
-    console.error('Error:', response.error);
-  }
-}`;
+import CODE from "./snippets/send-transfer.ts?raw";
 
 export const SendTransferExample: Component = () => {
   const [address, setAddress] = createSignal("");

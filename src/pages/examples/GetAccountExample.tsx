@@ -1,19 +1,7 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
-
-const CODE = `import { request } from 'sats-connect';
-
-const response = await request('wallet_getAccount', undefined);
-
-if (response.status === 'success') {
-  const { id, addresses, walletType } = response.result;
-  console.log('Account ID:', id);
-  console.log('Wallet Type:', walletType);
-  console.log('Addresses:', addresses);
-} else {
-  console.error('Error:', response.error);
-}`;
+import CODE from "./snippets/get-account.ts?raw";
 
 export const GetAccountExample: Component = () => {
   const [result, setResult] = createSignal<string | null>(null);

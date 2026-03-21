@@ -3,3 +3,8 @@ declare module "*.mdx" {
   const component: Component;
   export default component;
 }
+
+declare module "*.ts?raw" {
+  const content: string;
+  export default content;
+}

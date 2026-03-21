@@ -1,16 +1,7 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
-
-const CODE = `import { request } from 'sats-connect';
-
-const response = await request('spark_getBalance', null);
-
-if (response.status === 'success') {
-  console.log('Spark Balance:', response.result);
-} else {
-  console.error('Error:', response.error);
-}`;
+import CODE from "./snippets/spark-get-balance.ts?raw";
 
 export const SparkGetBalanceExample: Component = () => {
   const [result, setResult] = createSignal<string | null>(null);

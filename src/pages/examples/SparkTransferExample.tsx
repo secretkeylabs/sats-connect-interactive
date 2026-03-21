@@ -1,25 +1,7 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
-
-const CODE = `import { request, RpcErrorCode } from 'sats-connect';
-
-const response = await request('spark_transfer', {
-  recipients: [{
-    address: recipientSparkAddress,
-    amount: amountInSats,
-  }],
-});
-
-if (response.status === 'success') {
-  console.log('Transfer result:', response.result);
-} else {
-  if (response.error.code === RpcErrorCode.USER_REJECTION) {
-    console.log('User cancelled the request');
-  } else {
-    console.error('Error:', response.error);
-  }
-}`;
+import CODE from "./snippets/spark-transfer.ts?raw";
 
 export const SparkTransferExample: Component = () => {
   const [address, setAddress] = createSignal("");

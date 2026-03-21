@@ -1,23 +1,18 @@
 import { H1, H2, H3, P, Callout } from "../components/Mdx/Mdx";
 import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+import quickStartCode from "./examples/snippets/intro-quick-start.ts?raw";
 
 <H1>👋 Introduction</H1>
 
 <P>
-  <a href="https://github.com/secretkeylabs/sats-connect" target="_blank">
-    Sats Connect
-  </a>{" "}
-  is a JavaScript library that connects apps to <strong>Bitcoin</strong>,{" "}
-  <strong>Spark</strong>, <strong>Starknet</strong>, <strong>Stacks</strong>,
-  and other Bitcoin Layer 2 wallets like{" "}
-  <a href="https://www.xverse.app/" target="_blank">
-    Xverse
-  </a>
-  .
+  [Sats Connect](https://github.com/secretkeylabs/sats-connect) is a JavaScript
+  library that connects apps to <strong>Bitcoin</strong>, <strong>Spark</strong>
+  , <strong>Starknet</strong>, <strong>Stacks</strong>, and other Bitcoin Layer
+  2 wallets like [Xverse](https://www.xverse.app/).
 </P>
 
 <P>
-  It's already powering apps across the BitcoinFi ecosystem, with close to{" "}
+  It's already powering apps across the BitcoinFi ecosystem, with close to
   <strong>2 million downloads</strong> — making it one of the most widely used
   ways for developers to integrate Bitcoin wallets today.
 </P>
@@ -55,32 +50,15 @@ import { CodeBlock } from "../components/CodeBlock/CodeBlock";
 
 <P>Then import and use it in your application:</P>
 
-<CodeBlock
-  code={`import Wallet from 'sats-connect';
-
-// Connect to the user's wallet
-const response = await Wallet.request('wallet_connect', {
-addresses: ['payment', 'ordinals', 'stacks'],
-message: 'My app wants to connect!',
-});
-
-if (response.status === 'success') {
-console.log('Connected:', response.result);
-}`}
-lang="typescript"
-title="Quick start"
-/>
+<CodeBlock code={quickStartCode} lang="typescript" title="Quick start" />
 
 <H2>⚡ Power your Bitcoin apps with plug-and-play infra</H2>
 
 <P>
-  Sats Connect lets your app connect directly to users' wallets. The{" "}
-  <a href="https://docs.xverse.app/api" target="_blank">
-    Xverse API
-  </a>{" "}
-  gives you plug-and-play access to Bitcoin data and infrastructure — Ordinals,
-  Runes, mempool, balances, transactions, collections, and more — without
-  running your own nodes or indexers.
+  Sats Connect lets your app connect directly to users' wallets. The [Xverse
+  API](https://docs.xverse.app/api) gives you plug-and-play access to Bitcoin
+  data and infrastructure — Ordinals, Runes, mempool, balances, transactions,
+  collections, and more — without running your own nodes or indexers.
 </P>
 
 <P>
@@ -92,9 +70,6 @@ title="Quick start"
 
 <P>
   If you're building with Sats Connect or Xverse API and need help with
-  integration, join the{" "}
-  <a href="https://discord.gg/tN84HhSDrz" target="_blank">
-    developer forum
-  </a>{" "}
-  to connect with the community and the Xverse team.
+  integration, join the [developer forum](https://discord.gg/tN84HhSDrz) to
+  connect with the community and the Xverse team.
 </P>

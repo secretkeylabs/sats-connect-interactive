@@ -1,5 +1,7 @@
 import { H1, H2, P, Callout } from "../components/Mdx/Mdx";
 import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+import disconnectCode from "./examples/snippets/disconnect.ts?raw";
+import disconnectListenerCode from "./examples/snippets/disconnect-listener.ts?raw";
 
 <H1>Disconnect Wallet</H1>
 
@@ -9,14 +11,7 @@ import { CodeBlock } from "../components/CodeBlock/CodeBlock";
   previously granted by the user.
 </P>
 
-<CodeBlock
-  code={`import Wallet from 'sats-connect';
-
-// Disconnect from the wallet
-await Wallet.disconnect();`}
-lang="typescript"
-title="Disconnect"
-/>
+<CodeBlock code={disconnectCode} lang="typescript" title="Disconnect" />
 
 <Callout type="info">
   After disconnecting, your app will need to request a new connection via{" "}
@@ -37,18 +32,7 @@ title="Disconnect"
 </P>
 
 <CodeBlock
-  code={`import Wallet from 'sats-connect';
-
-const removeListener = Wallet.addListener({
-eventName: 'disconnect',
-cb: (event) => {
-console.log('Wallet disconnected:', event);
-// Clear your app state, redirect to connect page, etc.
-},
-});
-
-// Later, to stop listening:
-removeListener();`}
-lang="typescript"
-title="Listen for disconnection"
+  code={disconnectListenerCode}
+  lang="typescript"
+  title="Listen for disconnection"
 />

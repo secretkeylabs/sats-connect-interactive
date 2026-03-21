@@ -1,6 +1,10 @@
 import { A, useLocation } from "@solidjs/router";
 import { createSignal, Suspense, type ParentComponent, Show } from "solid-js";
+import { MDXProvider } from "solid-jsx";
+import { CustomLink } from "../CustomLink/CustomLink";
 import * as s from "./Layout.css";
+
+const mdxComponents = { a: CustomLink };
 
 type NavItem = {
   label: string;
@@ -110,7 +114,9 @@ export const Layout: ParentComponent = (props) => {
           </span>
         </header>
         <div class={s.pageContent}>
-          <Suspense>{props.children}</Suspense>
+          <MDXProvider components={mdxComponents}>
+            <Suspense>{props.children}</Suspense>
+          </MDXProvider>
         </div>
       </div>
     </div>

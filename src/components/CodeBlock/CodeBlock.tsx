@@ -1,5 +1,16 @@
-import { createSignal, type Component } from "solid-js";
+import { createSignal, createResource, type Component } from "solid-js";
+import { createHighlighterCoreSync } from "shiki/core";
+import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
+import ts from "shiki/langs/typescript.mjs";
+import bash from "shiki/langs/bash.mjs";
+import theme from "shiki/themes/github-dark-default.mjs";
 import * as s from "./CodeBlock.css";
+
+const highlighter = createHighlighterCoreSync({
+  themes: [theme],
+  langs: [ts, bash],
+  engine: createJavaScriptRegexEngine(),
+});
 
 interface CodeBlockProps {
   code: string;
@@ -9,6 +20,12 @@ interface CodeBlockProps {
 
 export const CodeBlock: Component<CodeBlockProps> = (props) => {
   const [copied, setCopied] = createSignal(false);
+
+  const html = () =>
+    highlighter.codeToHtml(props.code, {
+      lang: props.lang ?? "typescript",
+      theme: "github-dark-default",
+    });
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(props.code);
@@ -26,11 +43,7 @@ export const CodeBlock: Component<CodeBlockProps> = (props) => {
           {copied() ? "✓ Copied" : "Copy"}
         </button>
       </div>
-      <div class={s.codeBlockBody}>
-        <pre class={s.pre}>
-          <code>{props.code}</code>
-        </pre>
-      </div>
+      <div class={s.codeBlockBody} innerHTML={html()} />
     </div>
   );
 };

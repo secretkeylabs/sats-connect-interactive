@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { vars } from "../../styles/theme.css";
 
 export const codeBlockWrapper = style({
@@ -56,4 +56,18 @@ export const pre = style({
   padding: 0,
   whiteSpace: "pre",
   tabSize: 2,
+});
+
+// Allow Shiki's generated <pre> to inherit the container's styling
+globalStyle(`${codeBlockBody} pre`, {
+  margin: 0,
+  padding: 0,
+  background: "transparent !important",
+  fontSize: "inherit",
+  lineHeight: "inherit",
+  fontFamily: "inherit",
+});
+
+globalStyle(`${codeBlockBody} code`, {
+  fontFamily: "inherit",
 });

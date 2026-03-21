@@ -7,13 +7,7 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [
-    {
-      ...mdx({
-        jsxImportSource: "solid-js",
-        remarkPlugins: [remarkGfm],
-      }),
-      enforce: "pre" as const,
-    },
+    mdx({ jsxImportSource: "solid-jsx", remarkPlugins: [remarkGfm] }),
     solid(),
     vanillaExtractPlugin(),
   ],
