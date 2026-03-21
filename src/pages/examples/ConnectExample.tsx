@@ -1,4 +1,5 @@
 import { createSignal, type Component, Show } from "solid-js";
+import { AddressPurpose } from "sats-connect";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
 import { Spinner } from "../../components/Spinner/Spinner";
@@ -18,7 +19,12 @@ export const ConnectExample: Component = () => {
     try {
       const { default: Wallet } = await import("sats-connect");
       const response = await Wallet.request("wallet_connect", {
-        addresses: ["payment", "ordinals", "stacks", "spark"],
+        addresses: [
+          AddressPurpose.Payment,
+          AddressPurpose.Ordinals,
+          AddressPurpose.Stacks,
+          AddressPurpose.Spark,
+        ],
         message: message(),
       });
 

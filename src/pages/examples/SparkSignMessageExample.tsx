@@ -6,7 +6,6 @@ import CODE from "./snippets/spark-sign-message.ts?raw";
 
 export const SparkSignMessageExample: Component = () => {
   const [message, setMessage] = createSignal("Hello from Spark!");
-  const [publicKey, setPublicKey] = createSignal("");
   const [result, setResult] = createSignal<string | null>(null);
   const [error, setError] = createSignal<string | null>(null);
   const [loading, setLoading] = createSignal(false);
@@ -20,8 +19,6 @@ export const SparkSignMessageExample: Component = () => {
       const { request } = await import("sats-connect");
       const response = await request("spark_signMessage", {
         message: message(),
-        publicKey: publicKey(),
-        protocol: "ECDSA",
       });
 
       if (response.status === "success") {
@@ -55,22 +52,11 @@ export const SparkSignMessageExample: Component = () => {
         />
       </div>
 
-      <div class={s.fieldGroup}>
-        <label class={s.fieldLabel}>Spark public key</label>
-        <input
-          class={s.input}
-          type="text"
-          value={publicKey()}
-          onInput={(e) => setPublicKey(e.currentTarget.value)}
-          placeholder="Your Spark public key"
-        />
-      </div>
-
       <div class={s.buttonRow}>
         <button
           class={s.button}
           onClick={handleSign}
-          disabled={loading() || !message() || !publicKey()}
+          disabled={loading() || !message()}
         >
           Sign Message
         </button>

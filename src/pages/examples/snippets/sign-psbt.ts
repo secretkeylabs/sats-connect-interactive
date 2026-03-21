@@ -1,7 +1,10 @@
 import { request, RpcErrorCode } from "sats-connect";
 
+const psbtBase64 = "cHNidP8BA..."; // Base64-encoded PSBT
+const address = "bc1q...";
+
 const response = await request("signPsbt", {
-  psbt: psbtBase64, // Base64-encoded PSBT
+  psbt: psbtBase64,
   broadcast: false, // Set true to broadcast after signing
   signInputs: {
     [address]: [0], // Map of address to input indices to sign

@@ -1,5 +1,8 @@
 import { request, RpcErrorCode } from "sats-connect";
 
+const recipientAddress = "bc1q...";
+const amountInSats = 1000;
+
 const response = await request("sendTransfer", {
   recipients: [
     {

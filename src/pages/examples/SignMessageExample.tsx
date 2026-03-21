@@ -1,4 +1,5 @@
 import { createSignal, type Component, Show } from "solid-js";
+import { MessageSigningProtocols } from "sats-connect";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
 import { Spinner } from "../../components/Spinner/Spinner";
@@ -7,7 +8,9 @@ import CODE from "./snippets/sign-message.ts?raw";
 export const SignMessageExample: Component = () => {
   const [address, setAddress] = createSignal("");
   const [message, setMessage] = createSignal("Hello, Bitcoin!");
-  const [protocol, setProtocol] = createSignal("ECDSA");
+  const [protocol, setProtocol] = createSignal<MessageSigningProtocols>(
+    MessageSigningProtocols.ECDSA,
+  );
   const [result, setResult] = createSignal<string | null>(null);
   const [error, setError] = createSignal<string | null>(null);
   const [loading, setLoading] = createSignal(false);
@@ -22,7 +25,7 @@ export const SignMessageExample: Component = () => {
       const response = await request("signMessage", {
         address: address(),
         message: message(),
-        protocol: protocol() as "ECDSA" | "BIP322",
+        protocol: protocol(),
       });
 
       if (response.status === "success") {
@@ -68,7 +71,9 @@ export const SignMessageExample: Component = () => {
         <select
           class={s.select}
           value={protocol()}
-          onChange={(e) => setProtocol(e.currentTarget.value)}
+          onChange={(e) =>
+            setProtocol(e.currentTarget.value as MessageSigningProtocols)
+          }
         >
           <option value="ECDSA">ECDSA</option>
           <option value="BIP322">BIP322</option>

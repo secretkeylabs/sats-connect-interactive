@@ -1,8 +1,11 @@
 import { request, RpcErrorCode } from "sats-connect";
 
+const stacksAddress = "SP2...";
+const amountInMicroStx = 1000000; // 1 STX = 1,000,000 uSTX
+
 const response = await request("stx_transferStx", {
   recipient: stacksAddress,
-  amount: amountInMicroStx, // 1 STX = 1,000,000 uSTX
+  amount: amountInMicroStx,
   memo: "optional memo",
 });
 

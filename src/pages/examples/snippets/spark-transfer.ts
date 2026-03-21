@@ -1,12 +1,11 @@
 import { request, RpcErrorCode } from "sats-connect";
 
+const recipientSparkAddress = "sp1q...";
+const amountInSats = 1000;
+
 const response = await request("spark_transfer", {
-  recipients: [
-    {
-      address: recipientSparkAddress,
-      amount: amountInSats,
-    },
-  ],
+  receiverSparkAddress: recipientSparkAddress,
+  amountSats: amountInSats,
 });
 
 if (response.status === "success") {

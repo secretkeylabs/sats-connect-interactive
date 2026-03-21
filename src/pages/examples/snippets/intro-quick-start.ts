@@ -1,8 +1,12 @@
-import Wallet from "sats-connect";
+import Wallet, { AddressPurpose } from "sats-connect";
 
 // Connect to the user's wallet
 const response = await Wallet.request("wallet_connect", {
-  addresses: ["payment", "ordinals", "stacks"],
+  addresses: [
+    AddressPurpose.Payment,
+    AddressPurpose.Ordinals,
+    AddressPurpose.Stacks,
+  ],
   message: "My app wants to connect!",
 });
 

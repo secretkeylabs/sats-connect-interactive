@@ -19,12 +19,8 @@ export const SparkTransferExample: Component = () => {
     try {
       const { request } = await import("sats-connect");
       const response = await request("spark_transfer", {
-        recipients: [
-          {
-            address: address(),
-            amount: Number(amount()),
-          },
-        ],
+        receiverSparkAddress: address(),
+        amountSats: Number(amount()),
       });
 
       if (response.status === "success") {

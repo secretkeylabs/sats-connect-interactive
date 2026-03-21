@@ -1,9 +1,11 @@
-import { request, RpcErrorCode } from "sats-connect";
+import { request, RpcErrorCode, MessageSigningProtocols } from "sats-connect";
+
+const bitcoinAddress = "bc1q...";
 
 const response = await request("signMessage", {
   address: bitcoinAddress,
   message: "Hello, Bitcoin!",
-  protocol: "ECDSA", // or 'BIP322'
+  protocol: MessageSigningProtocols.ECDSA, // or MessageSigningProtocols.BIP322
 });
 
 if (response.status === "success") {
