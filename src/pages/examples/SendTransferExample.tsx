@@ -1,6 +1,7 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
+import { Spinner } from "../../components/Spinner/Spinner";
 import CODE from "./snippets/send-transfer.ts?raw";
 
 export const SendTransferExample: Component = () => {
@@ -8,10 +9,12 @@ export const SendTransferExample: Component = () => {
   const [amount, setAmount] = createSignal("");
   const [result, setResult] = createSignal<string | null>(null);
   const [error, setError] = createSignal<string | null>(null);
+  const [loading, setLoading] = createSignal(false);
 
   const handleSend = async () => {
     setResult(null);
     setError(null);
+    setLoading(true);
 
     try {
       const { request } = await import("sats-connect");
@@ -33,6 +36,8 @@ export const SendTransferExample: Component = () => {
       setError(
         `Wallet not available. Install a compatible wallet extension to try this example.\n\n${err}`,
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,13 +65,18 @@ export const SendTransferExample: Component = () => {
         />
       </div>
 
-      <button
-        class={s.button}
-        onClick={handleSend}
-        disabled={!address() || !amount()}
-      >
-        Send BTC
-      </button>
+      <div class={s.buttonRow}>
+        <button
+          class={s.button}
+          onClick={handleSend}
+          disabled={loading() || !address() || !amount()}
+        >
+          Send BTC
+        </button>
+        <Show when={loading()}>
+          <Spinner />
+        </Show>
+      </div>
 
       <Show when={result()}>
         <div class={`${s.resultArea} ${s.resultSuccess}`}>{result()}</div>

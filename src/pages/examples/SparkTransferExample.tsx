@@ -1,6 +1,7 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
+import { Spinner } from "../../components/Spinner/Spinner";
 import CODE from "./snippets/spark-transfer.ts?raw";
 
 export const SparkTransferExample: Component = () => {
@@ -8,10 +9,12 @@ export const SparkTransferExample: Component = () => {
   const [amount, setAmount] = createSignal("");
   const [result, setResult] = createSignal<string | null>(null);
   const [error, setError] = createSignal<string | null>(null);
+  const [loading, setLoading] = createSignal(false);
 
   const handleTransfer = async () => {
     setResult(null);
     setError(null);
+    setLoading(true);
 
     try {
       const { request } = await import("sats-connect");
@@ -33,6 +36,8 @@ export const SparkTransferExample: Component = () => {
       setError(
         `Wallet not available. Install a compatible wallet extension to try this example.\n\n${err}`,
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,13 +69,18 @@ export const SparkTransferExample: Component = () => {
         />
       </div>
 
-      <button
-        class={s.button}
-        onClick={handleTransfer}
-        disabled={!address() || !amount()}
-      >
-        Transfer
-      </button>
+      <div class={s.buttonRow}>
+        <button
+          class={s.button}
+          onClick={handleTransfer}
+          disabled={loading() || !address() || !amount()}
+        >
+          Transfer
+        </button>
+        <Show when={loading()}>
+          <Spinner />
+        </Show>
+      </div>
 
       <Show when={result()}>
         <div class={`${s.resultArea} ${s.resultSuccess}`}>{result()}</div>

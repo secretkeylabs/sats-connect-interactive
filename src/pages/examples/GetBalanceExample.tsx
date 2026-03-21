@@ -1,15 +1,18 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
+import { Spinner } from "../../components/Spinner/Spinner";
 import CODE from "./snippets/get-balance.ts?raw";
 
 export const GetBalanceExample: Component = () => {
   const [result, setResult] = createSignal<string | null>(null);
   const [error, setError] = createSignal<string | null>(null);
+  const [loading, setLoading] = createSignal(false);
 
   const handleGetBalance = async () => {
     setResult(null);
     setError(null);
+    setLoading(true);
 
     try {
       const { request } = await import("sats-connect");
@@ -24,14 +27,25 @@ export const GetBalanceExample: Component = () => {
       setError(
         `Wallet not available. Install a compatible wallet extension to try this example.\n\n${err}`,
       );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <InteractiveExample method="getBalance" title="Get BTC Balance" code={CODE}>
-      <button class={s.button} onClick={handleGetBalance}>
-        Get Balance
-      </button>
+      <div class={s.buttonRow}>
+        <button
+          class={s.button}
+          onClick={handleGetBalance}
+          disabled={loading()}
+        >
+          Get Balance
+        </button>
+        <Show when={loading()}>
+          <Spinner />
+        </Show>
+      </div>
 
       <Show when={result()}>
         <div class={`${s.resultArea} ${s.resultSuccess}`}>{result()}</div>

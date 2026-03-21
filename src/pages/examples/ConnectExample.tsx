@@ -1,19 +1,21 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
+import { Spinner } from "../../components/Spinner/Spinner";
 import CODE from "./snippets/connect.ts?raw";
 
 export const ConnectExample: Component = () => {
   const [result, setResult] = createSignal<string | null>(null);
   const [error, setError] = createSignal<string | null>(null);
+  const [loading, setLoading] = createSignal(false);
   const [message, setMessage] = createSignal("My app wants to connect!");
 
   const handleConnect = async () => {
     setResult(null);
     setError(null);
+    setLoading(true);
 
     try {
-      // @ts-ignore - sats-connect may not be installed in this docs project
       const { default: Wallet } = await import("sats-connect");
       const response = await Wallet.request("wallet_connect", {
         addresses: ["payment", "ordinals", "stacks", "spark"],
@@ -29,6 +31,8 @@ export const ConnectExample: Component = () => {
       setError(
         `Wallet not available. Install a compatible wallet extension (like Xverse) to try this example.\n\n${err}`,
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,9 +53,14 @@ export const ConnectExample: Component = () => {
         />
       </div>
 
-      <button class={s.button} onClick={handleConnect}>
-        Connect Wallet
-      </button>
+      <div class={s.buttonRow}>
+        <button class={s.button} onClick={handleConnect} disabled={loading()}>
+          Connect Wallet
+        </button>
+        <Show when={loading()}>
+          <Spinner />
+        </Show>
+      </div>
 
       <Show when={result()}>
         <div class={`${s.resultArea} ${s.resultSuccess}`}>{result()}</div>

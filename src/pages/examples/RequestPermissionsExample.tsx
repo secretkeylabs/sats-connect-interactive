@@ -1,15 +1,18 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
+import { Spinner } from "../../components/Spinner/Spinner";
 import CODE from "./snippets/request-permissions.ts?raw";
 
 export const RequestPermissionsExample: Component = () => {
   const [result, setResult] = createSignal<string | null>(null);
   const [error, setError] = createSignal<string | null>(null);
+  const [loading, setLoading] = createSignal(false);
 
   const handleRequest = async () => {
     setResult(null);
     setError(null);
+    setLoading(true);
 
     try {
       const { request } = await import("sats-connect");
@@ -24,6 +27,8 @@ export const RequestPermissionsExample: Component = () => {
       setError(
         `Wallet not available. Install a compatible wallet extension to try this example.\n\n${err}`,
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -33,9 +38,14 @@ export const RequestPermissionsExample: Component = () => {
       title="Request Permissions"
       code={CODE}
     >
-      <button class={s.button} onClick={handleRequest}>
-        Request Permissions
-      </button>
+      <div class={s.buttonRow}>
+        <button class={s.button} onClick={handleRequest} disabled={loading()}>
+          Request Permissions
+        </button>
+        <Show when={loading()}>
+          <Spinner />
+        </Show>
+      </div>
 
       <Show when={result()}>
         <div class={`${s.resultArea} ${s.resultSuccess}`}>{result()}</div>

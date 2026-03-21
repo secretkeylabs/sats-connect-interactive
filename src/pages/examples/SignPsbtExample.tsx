@@ -1,6 +1,7 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
+import { Spinner } from "../../components/Spinner/Spinner";
 import CODE from "./snippets/sign-psbt.ts?raw";
 
 export const SignPsbtExample: Component = () => {
@@ -8,10 +9,12 @@ export const SignPsbtExample: Component = () => {
   const [broadcast, setBroadcast] = createSignal(false);
   const [result, setResult] = createSignal<string | null>(null);
   const [error, setError] = createSignal<string | null>(null);
+  const [loading, setLoading] = createSignal(false);
 
   const handleSign = async () => {
     setResult(null);
     setError(null);
+    setLoading(true);
 
     try {
       const { request } = await import("sats-connect");
@@ -30,6 +33,8 @@ export const SignPsbtExample: Component = () => {
       setError(
         `Wallet not available. Install a compatible wallet extension to try this example.\n\n${err}`,
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,9 +63,18 @@ export const SignPsbtExample: Component = () => {
         </label>
       </div>
 
-      <button class={s.button} onClick={handleSign} disabled={!psbt()}>
-        Sign PSBT
-      </button>
+      <div class={s.buttonRow}>
+        <button
+          class={s.button}
+          onClick={handleSign}
+          disabled={loading() || !psbt()}
+        >
+          Sign PSBT
+        </button>
+        <Show when={loading()}>
+          <Spinner />
+        </Show>
+      </div>
 
       <Show when={result()}>
         <div class={`${s.resultArea} ${s.resultSuccess}`}>{result()}</div>

@@ -1,15 +1,18 @@
 import { createSignal, type Component, Show } from "solid-js";
 import { InteractiveExample } from "../../components/InteractiveExample/InteractiveExample";
 import * as s from "../../components/InteractiveExample/InteractiveExample.css";
+import { Spinner } from "../../components/Spinner/Spinner";
 import CODE from "./snippets/get-account.ts?raw";
 
 export const GetAccountExample: Component = () => {
   const [result, setResult] = createSignal<string | null>(null);
   const [error, setError] = createSignal<string | null>(null);
+  const [loading, setLoading] = createSignal(false);
 
   const handleGetAccount = async () => {
     setResult(null);
     setError(null);
+    setLoading(true);
 
     try {
       const { request } = await import("sats-connect");
@@ -24,6 +27,8 @@ export const GetAccountExample: Component = () => {
       setError(
         `Wallet not available. Install a compatible wallet extension to try this example.\n\n${err}`,
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -33,9 +38,18 @@ export const GetAccountExample: Component = () => {
       title="Get Account Info"
       code={CODE}
     >
-      <button class={s.button} onClick={handleGetAccount}>
-        Get Account
-      </button>
+      <div class={s.buttonRow}>
+        <button
+          class={s.button}
+          onClick={handleGetAccount}
+          disabled={loading()}
+        >
+          Get Account
+        </button>
+        <Show when={loading()}>
+          <Spinner />
+        </Show>
+      </div>
 
       <Show when={result()}>
         <div class={`${s.resultArea} ${s.resultSuccess}`}>{result()}</div>

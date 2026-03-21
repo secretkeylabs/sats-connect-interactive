@@ -101,7 +101,6 @@ export const button = style({
   fontSize: vars.fontSize.sm,
   cursor: "pointer",
   transition: "background-color 0.15s ease",
-  alignSelf: "flex-start",
   ":hover": {
     backgroundColor: vars.color.accentHover,
   },
@@ -109,6 +108,13 @@ export const button = style({
     opacity: 0.5,
     cursor: "not-allowed",
   },
+});
+
+export const buttonRow = style({
+  display: "flex",
+  alignItems: "center",
+  alignSelf: "flex-start",
+  gap: vars.space.md,
 });
 
 export const resultArea = style({
