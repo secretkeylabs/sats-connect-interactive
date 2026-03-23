@@ -1,26 +1,22 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { GetRunesBalanceExample } from "../examples/GetRunesBalanceExample";
 
-<H1>runes_getBalance</H1>
+# runes_getBalance
 
-<P>
-  Use the <code>runes_getBalance</code> method to retrieve the Runes token
-  balances held by the connected wallet.
-</P>
+Use the <code>runes_getBalance</code> method to retrieve the Runes token
+balances held by the connected wallet.
 
 <Callout type="info">
   Your app must first be connected to the wallet. No parameters are required.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <GetRunesBalanceExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  Returns an object with a <code>balances</code> array. Each balance includes:
-</P>
+Returns an object with a <code>balances</code> array. Each balance includes:
 
 <ParamTable
   params={[

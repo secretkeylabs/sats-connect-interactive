@@ -1,29 +1,25 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { GetBalanceExample } from "../examples/GetBalanceExample";
 
-<H1>getBalance</H1>
+# getBalance
 
-<P>
-  Use the <code>getBalance</code> method to retrieve your user's Bitcoin balance
-  — the amount of BTC that their connected wallet's Bitcoin payment address
-  holds.
-</P>
+Use the <code>getBalance</code> method to retrieve your user's Bitcoin balance
+— the amount of BTC that their connected wallet's Bitcoin payment address
+holds.
 
 <Callout type="info">
   Your app must first be connected to the wallet and have account read
   permissions. No query parameters are required.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <GetBalanceExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  The <code>getBalance</code> method returns an object representing the
-  connected wallet's payment address BTC holdings:
-</P>
+The <code>getBalance</code> method returns an object representing the
+connected wallet's payment address BTC holdings:
 
 <ParamTable
   params={[

@@ -1,28 +1,24 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { StxGetAccountsExample } from "../examples/StxGetAccountsExample";
 
-<H1>stx_getAccounts</H1>
+# stx_getAccounts
 
-<P>
-  Use the <code>stx_getAccounts</code> method to retrieve the Stacks account
-  details from the connected wallet, including addresses and Gaia hub
-  information.
-</P>
+Use the <code>stx_getAccounts</code> method to retrieve the Stacks account
+details from the connected wallet, including addresses and Gaia hub
+information.
 
 <Callout type="info">
   Your app must first be connected to the wallet. No parameters are required.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <StxGetAccountsExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  Returns an object with an <code>addresses</code> array and network
-  information:
-</P>
+Returns an object with an <code>addresses</code> array and network
+information:
 
 <ParamTable
   params={[

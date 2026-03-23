@@ -1,28 +1,25 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { GetCurrentPermissionsExample } from "../examples/GetCurrentPermissionsExample";
 
-<H1>wallet_getCurrentPermissions</H1>
+# wallet_getCurrentPermissions
 
-<P>
-  Use the <code>wallet_getCurrentPermissions</code> method to check what
-  permissions your app currently has from the connected wallet.
-</P>
+Use the <code>wallet_getCurrentPermissions</code> method to check what
+permissions your app currently has from the connected wallet.
 
 <Callout type="info">
   Your app must first be connected to the wallet. No parameters are required.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <GetCurrentPermissionsExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  Returns an array of permission objects. Each permission has a type (
-  <code>"account"</code> or <code>"wallet"</code>) and describes what actions
-  are allowed:
-</P>
+Returns an array of permission objects. Each permission has a type (
+
+<code>"account"</code> or <code>"wallet"</code>) and describes what actions are
+allowed:
 
 <ParamTable
   params={[

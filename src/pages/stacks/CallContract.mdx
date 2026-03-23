@@ -1,15 +1,13 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { StxCallContractExample } from "../examples/StxCallContractExample";
 
-<H1>stx_callContract</H1>
+# stx_callContract
 
-<P>
-  Use the <code>stx_callContract</code> method to call a function on a deployed
-  Stacks smart contract. The wallet will prompt the user to sign and broadcast
-  the transaction.
-</P>
+Use the <code>stx_callContract</code> method to call a function on a deployed
+Stacks smart contract. The wallet will prompt the user to sign and broadcast
+the transaction.
 
-<H2>Parameters</H2>
+## Parameters
 
 <ParamTable
   params={[
@@ -35,15 +33,15 @@ import { StxCallContractExample } from "../examples/StxCallContractExample";
 />
 
 <Callout type="tip">
-  To convert Clarity values to hex, use the <code>cvToHex</code> helper from the{" "}
+  To convert Clarity values to hex, use the <code>cvToHex</code> helper from the
   <code>@stacks/transactions</code> package.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <StxCallContractExample />
 
-<H2>Response</H2>
+## Response
 
 <ParamTable
   params={[

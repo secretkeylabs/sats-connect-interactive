@@ -1,27 +1,23 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { StxGetAddressesExample } from "../examples/StxGetAddressesExample";
 
-<H1>stx_getAddresses</H1>
+# stx_getAddresses
 
-<P>
-  Use the <code>stx_getAddresses</code> method to retrieve the Stacks addresses
-  from the connected wallet.
-</P>
+Use the <code>stx_getAddresses</code> method to retrieve the Stacks addresses
+from the connected wallet.
 
 <Callout type="info">
   Your app must first be connected to the wallet. No parameters are required.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <StxGetAddressesExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  Returns an object with an <code>addresses</code> array containing Stacks
-  address details:
-</P>
+Returns an object with an <code>addresses</code> array containing Stacks
+address details:
 
 <ParamTable
   params={[

@@ -1,15 +1,13 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { GetAccountsExample } from "../examples/GetAccountsExample";
 
-<H1>getAccounts</H1>
+# getAccounts
 
-<P>
-  Use the <code>getAccounts</code> method to request wallet account details for
-  specific purposes. Similar to <code>getAddresses</code> but returns additional
-  wallet type information.
-</P>
+Use the <code>getAccounts</code> method to request wallet account details for
+specific purposes. Similar to <code>getAddresses</code> but returns additional
+wallet type information.
 
-<H2>Parameters</H2>
+## Parameters
 
 <ParamTable
   params={[
@@ -29,13 +27,13 @@ import { GetAccountsExample } from "../examples/GetAccountsExample";
   ]}
 />
 
-<H2>Try it</H2>
+## Try it
 
 <GetAccountsExample />
 
-<H2>Response</H2>
+## Response
 
-<P>Returns an array of account objects, each containing:</P>
+Returns an array of account objects, each containing:
 
 <ParamTable
   params={[

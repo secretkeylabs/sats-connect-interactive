@@ -1,15 +1,13 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { StxSignTransactionExample } from "../examples/StxSignTransactionExample";
 
-<H1>stx_signTransaction</H1>
+# stx_signTransaction
 
-<P>
-  Use the <code>stx_signTransaction</code> method to sign a Stacks transaction.
-  The transaction should be provided as a hex-encoded string. Optionally, the
-  wallet can broadcast it after signing.
-</P>
+Use the <code>stx_signTransaction</code> method to sign a Stacks transaction.
+The transaction should be provided as a hex-encoded string. Optionally, the
+wallet can broadcast it after signing.
 
-<H2>Parameters</H2>
+## Parameters
 
 <ParamTable
   params={[
@@ -36,17 +34,17 @@ import { StxSignTransactionExample } from "../examples/StxSignTransactionExample
 />
 
 <Callout type="tip">
-  You can construct unsigned transactions using the{" "}
-  <code>@stacks/transactions</code> package with functions like{" "}
-  <code>makeUnsignedSTXTokenTransfer</code> or{" "}
+  You can construct unsigned transactions using the
+  <code>@stacks/transactions</code> package with functions like
+  <code>makeUnsignedSTXTokenTransfer</code> or
   <code>makeUnsignedContractCall</code>.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <StxSignTransactionExample />
 
-<H2>Response</H2>
+## Response
 
 <ParamTable
   params={[

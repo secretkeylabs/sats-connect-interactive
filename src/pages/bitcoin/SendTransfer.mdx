@@ -1,16 +1,14 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { SendTransferExample } from "../examples/SendTransferExample";
 
-<H1>sendTransfer</H1>
+# sendTransfer
 
-<P>
-  Use the <code>sendTransfer</code> method to request a transfer of Bitcoin to
-  one or more recipients from the user's wallet. The user will be prompted to
-  review the transaction, including recipients, amounts, and the desired
-  transaction fee.
-</P>
+Use the <code>sendTransfer</code> method to request a transfer of Bitcoin to
+one or more recipients from the user's wallet. The user will be prompted to
+review the transaction, including recipients, amounts, and the desired
+transaction fee.
 
-<H2>Parameters</H2>
+## Parameters
 
 <ParamTable
   params={[
@@ -24,16 +22,14 @@ import { SendTransferExample } from "../examples/SendTransferExample";
   ]}
 />
 
-<H2>Try it</H2>
+## Try it
 
 <SendTransferExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  On success, <code>sendTransfer</code> returns a result object containing the
-  transaction ID:
-</P>
+On success, <code>sendTransfer</code> returns a result object containing the
+transaction ID:
 
 <ParamTable
   params={[

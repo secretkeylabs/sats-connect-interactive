@@ -1,26 +1,22 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { GetInfoExample } from "../examples/GetInfoExample";
 
-<H1>getInfo</H1>
+# getInfo
 
-<P>
-  Use the <code>getInfo</code> method to retrieve information about the
-  connected wallet, such as its version, platform, and supported methods.
-</P>
+Use the <code>getInfo</code> method to retrieve information about the
+connected wallet, such as its version, platform, and supported methods.
 
 <Callout type="info">
   Your app must first be connected to the wallet. No parameters are required.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <GetInfoExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  The <code>getInfo</code> method returns an object with wallet metadata:
-</P>
+The <code>getInfo</code> method returns an object with wallet metadata:
 
 <ParamTable
   params={[

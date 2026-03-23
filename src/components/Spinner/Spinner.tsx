@@ -1,6 +1,7 @@
 import type { Component } from "solid-js";
 import * as s from "./Spinner.css";
-import iconSrc from "/sats-connect-icon.png";
+
+const iconSrc = `${import.meta.env.BASE_URL}sats-connect-icon.png`;
 
 export const Spinner: Component = () => (
   <div class={s.wrapper}>

@@ -1,24 +1,22 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { GetNetworkExample } from "../examples/GetNetworkExample";
 
-<H1>wallet_getNetwork</H1>
+# wallet_getNetwork
 
-<P>
-  Use the <code>wallet_getNetwork</code> method to retrieve the currently
-  selected network configuration for Bitcoin, Stacks, and Spark.
-</P>
+Use the <code>wallet_getNetwork</code> method to retrieve the currently
+selected network configuration for Bitcoin, Stacks, and Spark.
 
 <Callout type="info">
   Your app must first be connected to the wallet. No parameters are required.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <GetNetworkExample />
 
-<H2>Response</H2>
+## Response
 
-<P>Returns an object with the network names for each chain:</P>
+Returns an object with the network names for each chain:
 
 <ParamTable
   params={[
