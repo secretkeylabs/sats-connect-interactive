@@ -1,8 +1,9 @@
 import type { Component } from "solid-js";
 import * as s from "./Spinner.css";
+import iconSrc from "/sats-connect-icon.png";
 
 export const Spinner: Component = () => (
   <div class={s.wrapper}>
-    <img src="/sats-connect-icon.png" alt="" class={s.icon} />
+    <img src={iconSrc} alt="" class={s.icon} />
   </div>
 );
