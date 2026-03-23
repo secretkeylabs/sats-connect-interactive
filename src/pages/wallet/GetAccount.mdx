@@ -1,25 +1,21 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { GetAccountExample } from "../examples/GetAccountExample";
 
-<H1>wallet_getAccount</H1>
+# wallet_getAccount
 
-<P>
-  Use the <code>wallet_getAccount</code> method to retrieve account information
-  for the currently connected wallet. This includes the account ID, wallet type,
-  and all associated addresses.
-</P>
+Use the <code>wallet_getAccount</code> method to retrieve account information for the currently connected wallet. This includes the account ID, wallet type, and all associated addresses.
 
 <Callout type="info">
   This method requires the user to have previously connected their wallet to
-  your app. If the app doesn't have permissions, you'll receive an{" "}
+  your app. If the app doesn't have permissions, you'll receive an
   <code>ACCESS_DENIED</code> error.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <GetAccountExample />
 
-<H2>Response</H2>
+## Response
 
 <ParamTable
   params={[

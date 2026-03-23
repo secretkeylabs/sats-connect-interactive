@@ -54,6 +54,27 @@ export const logoAccent = style({
   color: vars.color.accent,
 });
 
+export const titleGroup = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.space.sm,
+  minWidth: 0,
+});
+
+export const titleIcon = style({
+  width: 18,
+  height: 18,
+  flexShrink: 0,
+});
+
+export const titleText = style({
+  fontSize: vars.fontSize.sm,
+  color: vars.color.textMuted,
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+});
+
 export const navSection = style({
   padding: `${vars.space.md} ${vars.space.sm}`,
 });
@@ -85,7 +106,7 @@ export const navLink = style({
 
 export const navLinkActive = style({
   color: vars.color.accent,
-  backgroundColor: `rgba(238, 122, 48, 0.08)`,
+  backgroundColor: "rgba(250, 76, 0, 0.08)",
   fontWeight: 500,
 });
 
@@ -132,6 +153,80 @@ export const pageContent = style({
   margin: "0 auto",
   padding: `${vars.space.xl} ${vars.space.xl}`,
 });
+
+globalStyle(`${pageContent} h1`, {
+  fontSize: vars.fontSize.xxxl,
+  fontWeight: 800,
+  letterSpacing: "-0.03em",
+  lineHeight: "1.2",
+  marginTop: 0,
+  marginBottom: vars.space.lg,
+  color: vars.color.text,
+});
+
+globalStyle(`${pageContent} h2`, {
+  fontSize: vars.fontSize.xxl,
+  fontWeight: 700,
+  letterSpacing: "-0.02em",
+  lineHeight: "1.3",
+  marginTop: vars.space.xxl,
+  marginBottom: vars.space.md,
+  paddingBottom: vars.space.sm,
+  borderBottom: `1px solid ${vars.color.border}`,
+  color: vars.color.text,
+});
+
+globalStyle(`${pageContent} h3`, {
+  fontSize: vars.fontSize.xl,
+  fontWeight: 600,
+  lineHeight: "1.4",
+  marginTop: vars.space.xl,
+  marginBottom: vars.space.sm,
+  color: vars.color.text,
+});
+
+globalStyle(`${pageContent} p`, {
+  marginTop: 0,
+  marginBottom: vars.space.md,
+  color: vars.color.textMuted,
+  lineHeight: "1.7",
+});
+
+globalStyle(`${pageContent} ul`, {
+  marginTop: 0,
+  marginBottom: vars.space.md,
+  paddingLeft: vars.space.lg,
+});
+
+globalStyle(`${pageContent} li`, {
+  marginBottom: vars.space.xs,
+  color: vars.color.textMuted,
+  lineHeight: "1.7",
+});
+
+globalStyle(`${pageContent} li::marker`, {
+  color: vars.color.accent,
+});
+
+globalStyle(`${pageContent} blockquote`, {
+  borderLeft: `3px solid ${vars.color.accent}`,
+  paddingLeft: vars.space.md,
+  marginBlock: vars.space.lg,
+  color: vars.color.textMuted,
+  fontStyle: "italic",
+});
+
+globalStyle(
+  `${pageContent} p code, ${pageContent} li code, ${pageContent} blockquote code`,
+  {
+    fontFamily: vars.font.mono,
+    fontSize: "0.9em",
+    backgroundColor: vars.color.bgCode,
+    padding: "0.15em 0.4em",
+    borderRadius: vars.radius.sm,
+    color: vars.color.accent,
+  },
+);
 
 export const overlay = style({
   display: "none",

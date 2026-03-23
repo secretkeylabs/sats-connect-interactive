@@ -10,14 +10,27 @@ import {
 import { AddressPurpose } from "sats-connect";
 import { MDXProvider } from "solid-jsx";
 import { CustomLink } from "../CustomLink/CustomLink";
+import { H1, H2, H3, P, Ul, Li, Blockquote, InlineCode } from "../Mdx/Mdx";
 import * as s from "./Layout.css";
+
+const iconSrc = `${import.meta.env.BASE_URL}sats-connect-icon.png`;
 
 function truncateAddress(address: string): string {
   if (address.length <= 12) return address;
   return `${address.slice(0, 6)}…${address.slice(-4)}`;
 }
 
-const mdxComponents = { a: CustomLink };
+const mdxComponents = {
+  a: CustomLink,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  p: P,
+  ul: Ul,
+  li: Li,
+  blockquote: Blockquote,
+  code: InlineCode,
+};
 
 type NavItem = {
   label: string;
@@ -213,14 +226,12 @@ export const Layout: ParentComponent = (props) => {
           <button class={s.hamburger} onClick={() => setMenuOpen(!menuOpen())}>
             ☰
           </button>
-          <span
-            style={{
-              "font-size": "0.875rem",
-              color: "var(--color-text-muted)",
-            }}
-          >
-            Sats Connect – Interactive Documentation
-          </span>
+          <div class={s.titleGroup}>
+            <img src={iconSrc} alt="" class={s.titleIcon} />
+            <span class={s.titleText}>
+              Sats Connect – Interactive Documentation
+            </span>
+          </div>
           <div class={s.topBarSpacer} />
           <Show
             when={address()}

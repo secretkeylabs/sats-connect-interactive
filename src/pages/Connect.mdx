@@ -1,21 +1,16 @@
-import { H1, H2, P, Callout, ParamTable } from "../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../components/Mdx/Mdx";
 import { ConnectExample } from "./examples/ConnectExample";
 
-<H1>Connect Wallet</H1>
+# Connect Wallet
 
-<P>
-  An app can connect to the user's wallet using <code>wallet_connect</code>.
-  This method grants read permissions on the account selected by the user and
-  returns commonly used data about the account, such as addresses and current
-  network.
-</P>
+An app can connect to the user's wallet using <code>wallet_connect</code>. This method grants read permissions on the account selected by the user and returns commonly used data about the account, such as addresses and current network.
 
 <Callout type="info">
   If the user has already granted permissions, no connection request popup will
   appear, ensuring a smooth user experience.
 </Callout>
 
-<H2>Parameters</H2>
+## Parameters
 
 <ParamTable
   params={[
@@ -43,16 +38,13 @@ import { ConnectExample } from "./examples/ConnectExample";
   ]}
 />
 
-<H2>Try it</H2>
+## Try it
 
 <ConnectExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  On success, <code>wallet_connect</code> returns an object containing the
-  user's wallet addresses, account ID, wallet type, and network information.
-</P>
+On success, <code>wallet_connect</code> returns an object containing the user's wallet addresses, account ID, wallet type, and network information.
 
 <ParamTable
   params={[

@@ -1,15 +1,11 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { SparkTransferExample } from "../examples/SparkTransferExample";
 
-<H1>spark_transfer</H1>
+# spark_transfer
 
-<P>
-  Use the <code>spark_transfer</code> method to send BTC via the Spark Layer 2
-  network. Spark transfers are instant and have minimal fees compared to
-  on-chain Bitcoin transactions.
-</P>
+Use the <code>spark_transfer</code> method to send BTC via the Spark Layer 2 network. Spark transfers are instant and have minimal fees compared to on-chain Bitcoin transactions.
 
-<H2>Parameters</H2>
+## Parameters
 
 <ParamTable
   params={[
@@ -23,13 +19,13 @@ import { SparkTransferExample } from "../examples/SparkTransferExample";
   ]}
 />
 
-<H2>Try it</H2>
+## Try it
 
 <SparkTransferExample />
 
-<H2>Response</H2>
+## Response
 
-<P>On success, returns the transfer result with transaction details.</P>
+On success, returns the transfer result with transaction details.
 
 <Callout type="tip">
   Spark transfers settle instantly, making them ideal for micropayments and

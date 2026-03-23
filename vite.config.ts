@@ -5,8 +5,8 @@ import mdx from "@mdx-js/rollup";
 import remarkGfm from "remark-gfm";
 import { resolve } from "path";
 
-export default defineConfig({
-  base: "/sats-connect-interactive/",
+export default defineConfig(({ command }) => ({
+  base: command === "serve" ? "/" : "/sats-connect-interactive/",
   plugins: [
     mdx({ jsxImportSource: "solid-jsx", remarkPlugins: [remarkGfm] }),
     solid(),
@@ -17,4 +17,4 @@ export default defineConfig({
       "~": resolve(__dirname, "src"),
     },
   },
-});
+}));

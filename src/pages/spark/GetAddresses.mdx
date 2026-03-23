@@ -1,27 +1,21 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { SparkGetAddressesExample } from "../examples/SparkGetAddressesExample";
 
-<H1>spark_getAddresses</H1>
+# spark_getAddresses
 
-<P>
-  Use the <code>spark_getAddresses</code> method to retrieve the Spark layer
-  addresses from the connected wallet.
-</P>
+Use the <code>spark_getAddresses</code> method to retrieve the Spark layer addresses from the connected wallet.
 
 <Callout type="info">
   Your app must first be connected to the wallet. No parameters are required.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <SparkGetAddressesExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  Returns an object with an <code>addresses</code> array containing Spark
-  address details:
-</P>
+Returns an object with an <code>addresses</code> array containing Spark address details:
 
 <ParamTable
   params={[

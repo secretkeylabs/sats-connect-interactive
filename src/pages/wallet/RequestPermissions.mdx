@@ -1,28 +1,21 @@
-import { H1, H2, P, Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
 import { RequestPermissionsExample } from "../examples/RequestPermissionsExample";
 
-<H1>wallet_requestPermissions</H1>
+# wallet_requestPermissions
 
-<P>
-  Use the <code>wallet_requestPermissions</code> method to explicitly request
-  permissions from the user's wallet. This is an alternative to{" "}
-  <code>wallet_connect</code> that focuses solely on obtaining permissions
-  without returning address data.
-</P>
+Use the <code>wallet_requestPermissions</code> method to explicitly request permissions from the user's wallet. This is an alternative to <code>wallet_connect</code> that focuses solely on obtaining permissions without returning address data.
 
 <Callout type="info">
   In most cases, using <code>wallet_connect</code> is preferred as it combines
-  permission granting with address retrieval in a single step. Use{" "}
+  permission granting with address retrieval in a single step. Use
   <code>wallet_requestPermissions</code> when you need fine-grained control over
   the permission flow.
 </Callout>
 
-<H2>Try it</H2>
+## Try it
 
 <RequestPermissionsExample />
 
-<H2>Response</H2>
+## Response
 
-<P>
-  On success, the method returns the list of permissions granted by the user.
-</P>
+On success, the method returns the list of permissions granted by the user.

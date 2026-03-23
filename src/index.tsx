@@ -69,10 +69,12 @@ const RenouncePermissions = lazy(
 const GetNetwork = lazy(() => import("./pages/wallet/GetNetwork.mdx"));
 
 const root = document.getElementById("app");
+const baseUrl = import.meta.env.BASE_URL ?? "/";
+const routerBase = baseUrl === "/" ? "/" : baseUrl.replace(/\/$/, "");
 
 render(
   () => (
-    <Router root={Layout} base="/sats-connect-interactive">
+    <Router root={Layout} base={routerBase}>
       <Route path="/" component={Introduction} />
       <Route path="/wallet-providers" component={WalletProviders} />
       <Route path="/connect" component={Connect} />
