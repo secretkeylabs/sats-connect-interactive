@@ -149,3 +149,35 @@ export const overlay = style({
 globalStyle(`${navLink}:hover`, {
   textDecoration: "none",
 });
+
+export const topBarSpacer = style({
+  flex: 1,
+});
+
+export const walletButton = style({
+  padding: `${vars.space.xs} ${vars.space.md}`,
+  borderRadius: vars.radius.md,
+  fontSize: vars.fontSize.sm,
+  fontWeight: 500,
+  fontFamily: vars.font.mono,
+  cursor: "pointer",
+  border: `1px solid ${vars.color.accent}`,
+  backgroundColor: "transparent",
+  color: vars.color.accent,
+  transition: "all 0.15s ease",
+  whiteSpace: "nowrap",
+  ":hover": {
+    backgroundColor: vars.color.accent,
+    color: vars.color.accentText,
+  },
+});
+
+export const walletButtonConnected = style({
+  border: `1px solid ${vars.color.border}`,
+  color: vars.color.text,
+  ":hover": {
+    borderColor: vars.color.error,
+    backgroundColor: "transparent",
+    color: vars.color.error,
+  },
+});

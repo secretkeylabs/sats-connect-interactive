@@ -1,8 +1,21 @@
 import { A, useLocation } from "@solidjs/router";
-import { createSignal, Suspense, type ParentComponent, Show } from "solid-js";
+import {
+  createSignal,
+  onCleanup,
+  onMount,
+  Suspense,
+  type ParentComponent,
+  Show,
+} from "solid-js";
+import { AddressPurpose } from "sats-connect";
 import { MDXProvider } from "solid-jsx";
 import { CustomLink } from "../CustomLink/CustomLink";
 import * as s from "./Layout.css";
+
+function truncateAddress(address: string): string {
+  if (address.length <= 12) return address;
+  return `${address.slice(0, 6)}…${address.slice(-4)}`;
+}
 
 const mdxComponents = { a: CustomLink };
 
@@ -95,7 +108,77 @@ const navigation: NavSection[] = [
 
 export const Layout: ParentComponent = (props) => {
   const [menuOpen, setMenuOpen] = createSignal(false);
+  const [address, setAddress] = createSignal<string | null>(null);
+  const [hovering, setHovering] = createSignal(false);
   const location = useLocation();
+
+  const pickPaymentAddress = (
+    addresses: Array<{ address: string; purpose: AddressPurpose }>,
+  ) => {
+    const payment = addresses.find((a) => a.purpose === AddressPurpose.Payment);
+    return payment?.address ?? addresses[0]?.address ?? null;
+  };
+
+  onMount(async () => {
+    try {
+      const { default: Wallet } = await import("sats-connect");
+
+      const removeAccountChange = Wallet.addListener({
+        eventName: "accountChange",
+        cb: (event) => {
+          if (event.addresses?.length) {
+            setAddress(pickPaymentAddress(event.addresses));
+          } else {
+            setAddress(null);
+          }
+        },
+      });
+
+      const removeDisconnect = Wallet.addListener({
+        eventName: "disconnect",
+        cb: () => {
+          setAddress(null);
+          setHovering(false);
+        },
+      });
+
+      onCleanup(() => {
+        removeAccountChange();
+        removeDisconnect();
+      });
+    } catch {
+      // wallet not available
+    }
+  });
+
+  const handleConnect = async () => {
+    try {
+      const { default: Wallet } = await import("sats-connect");
+      const response = await Wallet.request("wallet_connect", {
+        addresses: [
+          AddressPurpose.Payment,
+          AddressPurpose.Ordinals,
+          AddressPurpose.Stacks,
+        ],
+      });
+      if (response.status === "success") {
+        setAddress(pickPaymentAddress(response.result.addresses));
+      }
+    } catch {
+      // wallet not available
+    }
+  };
+
+  const handleDisconnect = async () => {
+    try {
+      const { default: Wallet } = await import("sats-connect");
+      await Wallet.disconnect();
+    } catch {
+      // ignore
+    }
+    setAddress(null);
+    setHovering(false);
+  };
 
   return (
     <div class={s.layoutContainer}>
@@ -138,6 +221,24 @@ export const Layout: ParentComponent = (props) => {
           >
             Sats Connect – Interactive Documentation
           </span>
+          <div class={s.topBarSpacer} />
+          <Show
+            when={address()}
+            fallback={
+              <button class={s.walletButton} onClick={handleConnect}>
+                Connect
+              </button>
+            }
+          >
+            <button
+              class={`${s.walletButton} ${s.walletButtonConnected}`}
+              onClick={handleDisconnect}
+              onMouseEnter={() => setHovering(true)}
+              onMouseLeave={() => setHovering(false)}
+            >
+              {hovering() ? "Disconnect" : truncateAddress(address()!)}
+            </button>
+          </Show>
         </header>
         <div class={s.pageContent}>
           <MDXProvider components={mdxComponents}>
