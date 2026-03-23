@@ -1,19 +1,33 @@
-# Sats Connect – Interactive Documentation
+# Sats Connect Interactive Docs
 
-Interactive documentation site for the [Sats Connect](https://github.com/secretkeylabs/sats-connect) SDK. Built with Solid.js, MDX, and Vanilla Extract.
+This repository contains the interactive documentation for [Sats Connect](https://github.com/secretkeylabs/sats-connect).
 
-Every API method includes live, runnable examples alongside documentation. Click "Show code" on any example to see a copy-pasteable snippet.
+The goal of this site is to make the SDK easy to explore:
 
-## Development
+- browse each method in one place
+- try live examples directly in the docs
+- inspect the example code behind every interactive demo
+
+If you're working on the docs locally, start with:
+
+## Local Development
 
 ```bash
 bun install
 bun run dev
 ```
 
-## Build
+Then open the local app in your browser and navigate through the docs as you make changes.
+
+## Production Build
 
 ```bash
 bun run build
 bun run preview
+```
+
+## Formatting
+
+```bash
+bunx prettier --write .
 ```
