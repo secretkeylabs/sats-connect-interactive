@@ -123,7 +123,6 @@ export const Layout: ParentComponent = (props) => {
   const [menuOpen, setMenuOpen] = createSignal(false);
   const [address, setAddress] = createSignal<string | null>(null);
   const [hovering, setHovering] = createSignal(false);
-  const location = useLocation();
 
   const pickPaymentAddress = (
     addresses: Array<{ address: string; purpose: AddressPurpose }>,
@@ -207,7 +206,9 @@ export const Layout: ParentComponent = (props) => {
             {section.items.map((item) => (
               <A
                 href={item.href}
-                class={`${s.navLink} ${location.pathname === item.href ? s.navLinkActive : ""}`}
+                class={s.navLink}
+                activeClass={s.navLinkActive}
+                end
                 onClick={() => setMenuOpen(false)}
               >
                 {item.label}
