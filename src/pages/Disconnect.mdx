@@ -5,10 +5,7 @@ import disconnectListenerCode from "./examples/snippets/disconnect-listener.ts?r
 
 # Disconnect Wallet
 
-To disconnect your app from the user's wallet, use the
-
-<code>wallet_renouncePermissions</code> method. This revokes all permissions
-previously granted by the user.
+To disconnect your app from the user's wallet, use the <code>wallet_renouncePermissions</code> method. This revokes all permissions previously granted by the user.
 
 <CodeBlock code={disconnectCode} lang="typescript" title="Disconnect" />
 
@@ -19,13 +16,9 @@ previously granted by the user.
 
 ## How it works
 
-Calling <code>Wallet.disconnect()</code> internally calls
+Calling <code>Wallet.disconnect()</code> internally calls <code>wallet_renouncePermissions</code> and clears the stored provider ID. This ensures a clean disconnection.
 
-<code>wallet_renouncePermissions</code> and clears the stored provider ID. This
-ensures a clean disconnection.
-
-Users can also disconnect directly from their wallet UI. Your app should
-listen for the <code>disconnect</code> event to handle this case gracefully:
+Users can also disconnect directly from their wallet UI. Your app should listen for the <code>disconnect</code> event to handle this case gracefully:
 
 <CodeBlock
   code={disconnectListenerCode}

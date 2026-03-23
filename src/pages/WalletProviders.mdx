@@ -2,26 +2,18 @@ import { Callout } from "../components/Mdx/Mdx";
 
 # Wallet Providers
 
-Sats Connect lets your app connect with a variety of Bitcoin, Spark, Starknet
-& Stacks wallets:
+Sats Connect lets your app connect with a variety of Bitcoin, Spark, Starknet & Stacks wallets:
 
 - The [Xverse](https://www.xverse.app/) browser extension and mobile in-app browser
 - The Unisat browser extension
 - 🔜 Any Bitcoin wallet which follows the [WBIP004](https://wbips.netlify.app/wbips/WBIP004) standard
 - 🔜 Support for more Bitcoin, Spark, Stacks & Starknet wallets coming soon
 
-When installed in your user's browser, the wallets listed above inject a wallet
-provider into the <code>window</code> of your application. Sats Connect detects
-the wallet provider and lets your app interact with it via the
-
-<code>Wallet</code> component and <code>Wallet.request</code> methods.
+When installed in your user's browser, the wallets listed above inject a wallet provider into the <code>window</code> of your application. Sats Connect detects the wallet provider and lets your app interact with it via the <code>Wallet</code> component and <code>Wallet.request</code> methods.
 
 ## Xverse Wallet Provider
 
-[Xverse](https://www.xverse.app/)'s browser extension and mobile in-app
-browser will inject an <code>XverseProviders</code> object into the
-
-<code>window</code> of your application.
+[Xverse](https://www.xverse.app/)'s browser extension and mobile in-app browser will inject an <code>XverseProviders</code> object into the <code>window</code> of your application.
 
 The <code>XverseProviders</code> interface exposes two sets of methods:
 
@@ -30,16 +22,11 @@ The <code>XverseProviders</code> interface exposes two sets of methods:
 
 ## Unisat Wallet Provider
 
-The Unisat browser extension injects a <code>window.unisat</code> object into
-the <code>window</code> of your application. Sats Connect lets you interact with
-the Unisat wallet provider via the standard <code>Wallet.request</code> methods.
+The Unisat browser extension injects a <code>window.unisat</code> object into the <code>window</code> of your application. Sats Connect lets you interact with the Unisat wallet provider via the standard <code>Wallet.request</code> methods.
 
 ## 🔜 WBIP004 Web Providers
 
-Sats Connect will soon detect wallet extensions that inject their provider
-information under <code>window.btc_providers</code>, following the
-[WBIP004](https://wbips.netlify.app/wbips/WBIP004) standard, and let you
-interact with them via the standard <code>Wallet.request</code> methods.
+Sats Connect will soon detect wallet extensions that inject their provider information under <code>window.btc_providers</code>, following the [WBIP004](https://wbips.netlify.app/wbips/WBIP004) standard, and let you interact with them via the standard <code>Wallet.request</code> methods.
 
 <Callout type="info">
   If no wallet extension is detected, Sats Connect will show a wallet selection

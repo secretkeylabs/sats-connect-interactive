@@ -3,10 +3,7 @@ import { ConnectExample } from "./examples/ConnectExample";
 
 # Connect Wallet
 
-An app can connect to the user's wallet using <code>wallet_connect</code>.
-This method grants read permissions on the account selected by the user and
-returns commonly used data about the account, such as addresses and current
-network.
+An app can connect to the user's wallet using <code>wallet_connect</code>. This method grants read permissions on the account selected by the user and returns commonly used data about the account, such as addresses and current network.
 
 <Callout type="info">
   If the user has already granted permissions, no connection request popup will
@@ -47,8 +44,7 @@ network.
 
 ## Response
 
-On success, <code>wallet_connect</code> returns an object containing the
-user's wallet addresses, account ID, wallet type, and network information.
+On success, <code>wallet_connect</code> returns an object containing the user's wallet addresses, account ID, wallet type, and network information.
 
 <ParamTable
   params={[
