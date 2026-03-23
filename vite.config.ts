@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import { resolve } from "path";
 
 export default defineConfig({
+  base: "/sats-connect-interactive/",
   plugins: [
     mdx({ jsxImportSource: "solid-jsx", remarkPlugins: [remarkGfm] }),
     solid(),

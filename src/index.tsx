@@ -72,7 +72,7 @@ const root = document.getElementById("app");
 
 render(
   () => (
-    <Router root={Layout}>
+    <Router root={Layout} base="/sats-connect-interactive">
       <Route path="/" component={Introduction} />
       <Route path="/wallet-providers" component={WalletProviders} />
       <Route path="/connect" component={Connect} />
