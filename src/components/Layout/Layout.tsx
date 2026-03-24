@@ -1,5 +1,6 @@
 import { A, useLocation } from "@solidjs/router";
 import {
+  createMemo,
   createSignal,
   onCleanup,
   onMount,
@@ -123,6 +124,17 @@ export const Layout: ParentComponent = (props) => {
   const [menuOpen, setMenuOpen] = createSignal(false);
   const [address, setAddress] = createSignal<string | null>(null);
   const [hovering, setHovering] = createSignal(false);
+  const location = useLocation();
+
+  const currentPageTitle = createMemo(() => {
+    const currentItem = navigation
+      .flatMap((section) => section.items)
+      .find((item) => item.href === location.pathname);
+
+    return currentItem?.label
+      ? `Sats Connect — ${currentItem.label}`
+      : "Sats Connect";
+  });
 
   const pickPaymentAddress = (
     addresses: Array<{ address: string; purpose: AddressPurpose }>,
@@ -229,9 +241,7 @@ export const Layout: ParentComponent = (props) => {
           </button>
           <div class={s.titleGroup}>
             <img src={iconSrc} alt="" class={s.titleIcon} />
-            <span class={s.titleText}>
-              Sats Connect – Interactive Documentation
-            </span>
+            <span class={s.titleText}>{currentPageTitle()}</span>
           </div>
           <div class={s.topBarSpacer} />
           <Show
