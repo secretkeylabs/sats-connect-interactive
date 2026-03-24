@@ -1,5 +1,6 @@
 import { A, useLocation } from "@solidjs/router";
 import {
+  createEffect,
   createMemo,
   createSignal,
   onCleanup,
@@ -14,6 +15,7 @@ import { CustomLink } from "../CustomLink/CustomLink";
 import { H1, H2, H3, P, Ul, Li, Blockquote, InlineCode } from "../Mdx/Mdx";
 import * as s from "./Layout.css";
 
+const basePath = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "");
 const iconSrc = `${import.meta.env.BASE_URL}sats-connect-icon.png`;
 
 function truncateAddress(address: string): string {
@@ -126,14 +128,33 @@ export const Layout: ParentComponent = (props) => {
   const [hovering, setHovering] = createSignal(false);
   const location = useLocation();
 
+  const normalizedPath = createMemo(() => {
+    const pathname = location.pathname;
+
+    if (!basePath || basePath === "/") {
+      return pathname || "/";
+    }
+
+    if (pathname.startsWith(basePath)) {
+      const strippedPath = pathname.slice(basePath.length);
+      return strippedPath || "/";
+    }
+
+    return pathname || "/";
+  });
+
   const currentPageTitle = createMemo(() => {
     const currentItem = navigation
       .flatMap((section) => section.items)
-      .find((item) => item.href === location.pathname);
+      .find((item) => item.href === normalizedPath());
 
     return currentItem?.label
       ? `Sats Connect — ${currentItem.label}`
       : "Sats Connect";
+  });
+
+  createEffect(() => {
+    document.title = currentPageTitle();
   });
 
   const pickPaymentAddress = (
