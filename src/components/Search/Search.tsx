@@ -1,7 +1,8 @@
 import { Dialog } from "@ark-ui/solid";
 import { A, useLocation } from "@solidjs/router";
 import MiniSearch, { type SearchResult } from "minisearch";
-import commandIconSvg from "../../../command.svg?raw";
+import commandIconSvg from "../../icons/command.svg?raw";
+import magnifyingGlassSvg from "../../icons/magnifying-glass.svg?raw";
 import {
   For,
   Show,
@@ -200,7 +201,7 @@ export const Search = () => {
         aria-label={`Open documentation search (${shortcutInfo().ariaLabel})`}
       >
         <span class={s.triggerLabel}>
-          <span class={s.triggerIcon}>⌕</span>
+          <span class={s.triggerIcon} innerHTML={magnifyingGlassSvg} />
           <span class={s.triggerText}>Search documentation</span>
         </span>
         <span class={s.triggerShortcut}>
@@ -240,7 +241,7 @@ export const Search = () => {
 
             <div class={s.body}>
               <div class={s.inputRow}>
-                <span class={s.inputIcon}>⌕</span>
+                <span class={s.inputIcon} innerHTML={magnifyingGlassSvg} />
                 <input
                   ref={inputRef}
                   type="text"

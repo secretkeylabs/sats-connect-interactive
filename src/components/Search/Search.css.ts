@@ -37,8 +37,21 @@ export const triggerLabel = style({
 });
 
 export const triggerIcon = style({
-  fontSize: vars.fontSize.base,
+  width: "1cap",
+  height: "1cap",
+  minWidth: "1cap",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  overflow: "visible",
   color: vars.color.textSubtle,
+});
+
+globalStyle(`${triggerIcon} svg`, {
+  width: "100%",
+  height: "100%",
+  display: "block",
+  fill: "currentColor",
 });
 
 export const triggerText = style({
@@ -176,8 +189,21 @@ export const inputRow = style({
 });
 
 export const inputIcon = style({
+  width: "1cap",
+  height: "1cap",
+  minWidth: "1cap",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  overflow: "visible",
   color: vars.color.textSubtle,
-  fontSize: vars.fontSize.base,
+});
+
+globalStyle(`${inputIcon} svg`, {
+  width: "100%",
+  height: "100%",
+  display: "block",
+  fill: "currentColor",
 });
 
 export const input = style({
