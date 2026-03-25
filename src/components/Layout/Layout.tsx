@@ -234,6 +234,9 @@ export const Layout: ParentComponent = (props) => {
             <span class={s.logoAccent}>Sats</span> Connect
           </span>
         </div>
+        <div class={s.sidebarSearch}>
+          <Search />
+        </div>
         {navigation.map((section) => (
           <div class={s.navSection}>
             <div class={s.navSectionTitle}>{section.title}</div>

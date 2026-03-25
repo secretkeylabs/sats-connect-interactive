@@ -3,7 +3,9 @@ import { vars } from "../../styles/theme.css";
 
 export const searchTrigger = style({
   width: "100%",
-  maxWidth: 460,
+  minWidth: 0,
+  flex: "0 1 auto",
+  maxWidth: 360,
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",

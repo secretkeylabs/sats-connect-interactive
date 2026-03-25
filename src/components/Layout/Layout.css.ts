@@ -43,6 +43,17 @@ export const sidebarHeader = style({
   gap: vars.space.sm,
 });
 
+export const sidebarSearch = style({
+  display: "none",
+  padding: `${vars.space.md} ${vars.space.sm} ${vars.space.sm}`,
+  borderBottom: `1px solid ${vars.color.border}`,
+  "@media": {
+    "(max-width: 920px)": {
+      display: "block",
+    },
+  },
+});
+
 export const logoText = style({
   fontSize: vars.fontSize.lg,
   fontWeight: 700,
@@ -157,11 +168,16 @@ export const topBarLead = style({
 });
 
 export const topBarSearch = style({
-  flex: "0 1 520px",
+  flexGrow: 2,
+  flexShrink: 0.5,
+  flexBasis: "0",
   display: "flex",
   justifyContent: "center",
   minWidth: 0,
   "@media": {
+    "(max-width: 920px)": {
+      display: "none",
+    },
     "(max-width: 768px)": {
       order: 3,
       flexBasis: "100%",
