@@ -14,6 +14,7 @@ import { MDXProvider } from "solid-jsx";
 import { CustomLink } from "../CustomLink/CustomLink";
 import { H1, H2, H3, P, Ul, Li, Blockquote, InlineCode } from "../Mdx/Mdx";
 import { Search } from "../Search/Search";
+import { searchSidebarMediaQuery } from "../../styles/responsive";
 import * as s from "./Layout.css";
 
 const basePath = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "");
@@ -127,6 +128,7 @@ export const Layout: ParentComponent = (props) => {
   const [menuOpen, setMenuOpen] = createSignal(false);
   const [address, setAddress] = createSignal<string | null>(null);
   const [hovering, setHovering] = createSignal(false);
+  const [showSidebarSearch, setShowSidebarSearch] = createSignal(false);
   const location = useLocation();
 
   const normalizedPath = createMemo(() => {
@@ -197,6 +199,21 @@ export const Layout: ParentComponent = (props) => {
     }
   });
 
+  onMount(() => {
+    const mediaQuery = window.matchMedia(searchSidebarMediaQuery);
+
+    const syncSearchPlacement = (event?: MediaQueryListEvent) => {
+      setShowSidebarSearch(event?.matches ?? mediaQuery.matches);
+    };
+
+    syncSearchPlacement();
+    mediaQuery.addEventListener("change", syncSearchPlacement);
+
+    onCleanup(() => {
+      mediaQuery.removeEventListener("change", syncSearchPlacement);
+    });
+  });
+
   const handleConnect = async () => {
     try {
       const { default: Wallet } = await import("sats-connect");
@@ -234,9 +251,11 @@ export const Layout: ParentComponent = (props) => {
             <span class={s.logoAccent}>Sats</span> Connect
           </span>
         </div>
-        <div class={s.sidebarSearch}>
-          <Search />
-        </div>
+        <Show when={showSidebarSearch()}>
+          <div class={s.sidebarSearch}>
+            <Search />
+          </div>
+        </Show>
         {navigation.map((section) => (
           <div class={s.navSection}>
             <div class={s.navSectionTitle}>{section.title}</div>
@@ -274,9 +293,11 @@ export const Layout: ParentComponent = (props) => {
               <span class={s.titleText}>{currentPageTitle()}</span>
             </div>
           </div>
-          <div class={s.topBarSearch}>
-            <Search />
-          </div>
+          <Show when={!showSidebarSearch()}>
+            <div class={s.topBarSearch}>
+              <Search />
+            </div>
+          </Show>
           <div class={s.topBarActions}>
             <Show
               when={address()}

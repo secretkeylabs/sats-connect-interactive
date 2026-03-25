@@ -1,5 +1,6 @@
 import { style, globalStyle } from "@vanilla-extract/css";
 import { vars } from "../../styles/theme.css";
+import { searchSidebarMediaQuery } from "../../styles/responsive";
 
 export const layoutContainer = style({
   display: "flex",
@@ -48,7 +49,7 @@ export const sidebarSearch = style({
   padding: `${vars.space.md} ${vars.space.sm} ${vars.space.sm}`,
   borderBottom: `1px solid ${vars.color.border}`,
   "@media": {
-    "(max-width: 920px)": {
+    [searchSidebarMediaQuery]: {
       display: "block",
     },
   },
@@ -175,7 +176,7 @@ export const topBarSearch = style({
   justifyContent: "center",
   minWidth: 0,
   "@media": {
-    "(max-width: 920px)": {
+    [searchSidebarMediaQuery]: {
       display: "none",
     },
     "(max-width: 768px)": {
