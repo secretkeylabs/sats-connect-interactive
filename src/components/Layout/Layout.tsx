@@ -13,6 +13,7 @@ import { AddressPurpose } from "sats-connect";
 import { MDXProvider } from "solid-jsx";
 import { CustomLink } from "../CustomLink/CustomLink";
 import { H1, H2, H3, P, Ul, Li, Blockquote, InlineCode } from "../Mdx/Mdx";
+import { Search } from "../Search/Search";
 import * as s from "./Layout.css";
 
 const basePath = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "");
@@ -233,6 +234,9 @@ export const Layout: ParentComponent = (props) => {
             <span class={s.logoAccent}>Sats</span> Connect
           </span>
         </div>
+        <div class={s.sidebarSearch}>
+          <Search />
+        </div>
         {navigation.map((section) => (
           <div class={s.navSection}>
             <div class={s.navSectionTitle}>{section.title}</div>
@@ -257,31 +261,41 @@ export const Layout: ParentComponent = (props) => {
 
       <div class={s.mainContent}>
         <header class={s.topBar}>
-          <button class={s.hamburger} onClick={() => setMenuOpen(!menuOpen())}>
-            ☰
-          </button>
-          <div class={s.titleGroup}>
-            <img src={iconSrc} alt="" class={s.titleIcon} />
-            <span class={s.titleText}>{currentPageTitle()}</span>
-          </div>
-          <div class={s.topBarSpacer} />
-          <Show
-            when={address()}
-            fallback={
-              <button class={s.walletButton} onClick={handleConnect}>
-                Connect
-              </button>
-            }
-          >
+          <div class={s.topBarLead}>
             <button
-              class={`${s.walletButton} ${s.walletButtonConnected}`}
-              onClick={handleDisconnect}
-              onMouseEnter={() => setHovering(true)}
-              onMouseLeave={() => setHovering(false)}
+              class={s.hamburger}
+              onClick={() => setMenuOpen(!menuOpen())}
+              aria-label="Toggle navigation"
             >
-              {hovering() ? "Disconnect" : truncateAddress(address()!)}
+              ☰
             </button>
-          </Show>
+            <div class={s.titleGroup}>
+              <img src={iconSrc} alt="" class={s.titleIcon} />
+              <span class={s.titleText}>{currentPageTitle()}</span>
+            </div>
+          </div>
+          <div class={s.topBarSearch}>
+            <Search />
+          </div>
+          <div class={s.topBarActions}>
+            <Show
+              when={address()}
+              fallback={
+                <button class={s.walletButton} onClick={handleConnect}>
+                  Connect
+                </button>
+              }
+            >
+              <button
+                class={`${s.walletButton} ${s.walletButtonConnected}`}
+                onClick={handleDisconnect}
+                onMouseEnter={() => setHovering(true)}
+                onMouseLeave={() => setHovering(false)}
+              >
+                {hovering() ? "Disconnect" : truncateAddress(address()!)}
+              </button>
+            </Show>
+          </div>
         </header>
         <div class={s.pageContent}>
           <MDXProvider components={mdxComponents}>

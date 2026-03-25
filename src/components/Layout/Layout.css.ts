@@ -43,6 +43,17 @@ export const sidebarHeader = style({
   gap: vars.space.sm,
 });
 
+export const sidebarSearch = style({
+  display: "none",
+  padding: `${vars.space.md} ${vars.space.sm} ${vars.space.sm}`,
+  borderBottom: `1px solid ${vars.color.border}`,
+  "@media": {
+    "(max-width: 920px)": {
+      display: "block",
+    },
+  },
+});
+
 export const logoText = style({
   fontSize: vars.fontSize.lg,
   fontWeight: 700,
@@ -131,6 +142,60 @@ export const topBar = style({
   display: "flex",
   alignItems: "center",
   gap: vars.space.md,
+  justifyContent: "space-between",
+  minHeight: 72,
+  "@media": {
+    "(max-width: 768px)": {
+      padding: `${vars.space.sm} ${vars.space.md}`,
+      flexWrap: "wrap",
+      minHeight: "auto",
+    },
+  },
+});
+
+export const topBarLead = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.space.md,
+  minWidth: 0,
+  flex: "1 1 0",
+  "@media": {
+    "(max-width: 768px)": {
+      flex: "0 1 auto",
+      width: "auto",
+    },
+  },
+});
+
+export const topBarSearch = style({
+  flexGrow: 2,
+  flexShrink: 0.5,
+  flexBasis: "0",
+  display: "flex",
+  justifyContent: "center",
+  minWidth: 0,
+  "@media": {
+    "(max-width: 920px)": {
+      display: "none",
+    },
+    "(max-width: 768px)": {
+      order: 3,
+      flexBasis: "100%",
+      width: "100%",
+    },
+  },
+});
+
+export const topBarActions = style({
+  display: "flex",
+  justifyContent: "flex-end",
+  flex: "1 1 0",
+  minWidth: 0,
+  "@media": {
+    "(max-width: 768px)": {
+      flex: "0 1 auto",
+    },
+  },
 });
 
 export const hamburger = style({
@@ -243,10 +308,6 @@ export const overlay = style({
 
 globalStyle(`${navLink}:hover`, {
   textDecoration: "none",
-});
-
-export const topBarSpacer = style({
-  flex: 1,
 });
 
 export const walletButton = style({
