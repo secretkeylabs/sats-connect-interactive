@@ -131,6 +131,55 @@ export const topBar = style({
   display: "flex",
   alignItems: "center",
   gap: vars.space.md,
+  justifyContent: "space-between",
+  minHeight: 72,
+  "@media": {
+    "(max-width: 768px)": {
+      padding: `${vars.space.sm} ${vars.space.md}`,
+      flexWrap: "wrap",
+      minHeight: "auto",
+    },
+  },
+});
+
+export const topBarLead = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.space.md,
+  minWidth: 0,
+  flex: "1 1 0",
+  "@media": {
+    "(max-width: 768px)": {
+      flex: "0 1 auto",
+      width: "auto",
+    },
+  },
+});
+
+export const topBarSearch = style({
+  flex: "0 1 520px",
+  display: "flex",
+  justifyContent: "center",
+  minWidth: 0,
+  "@media": {
+    "(max-width: 768px)": {
+      order: 3,
+      flexBasis: "100%",
+      width: "100%",
+    },
+  },
+});
+
+export const topBarActions = style({
+  display: "flex",
+  justifyContent: "flex-end",
+  flex: "1 1 0",
+  minWidth: 0,
+  "@media": {
+    "(max-width: 768px)": {
+      flex: "0 1 auto",
+    },
+  },
 });
 
 export const hamburger = style({
@@ -243,10 +292,6 @@ export const overlay = style({
 
 globalStyle(`${navLink}:hover`, {
   textDecoration: "none",
-});
-
-export const topBarSpacer = style({
-  flex: 1,
 });
 
 export const walletButton = style({

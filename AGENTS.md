@@ -263,3 +263,21 @@ The `<MDXProvider>` in `Layout.tsx` maps `<a>` tags to `CustomLink` so markdown 
 | Route paths       | kebab-case  | `/bitcoin/get-info`       |
 | Nav labels        | method name | `getInfo`, `runes_etch`   |
 | Component folders | PascalCase  | `CodeBlock/CodeBlock.tsx` |
+
+## Tools used in this repo
+
+- **Bun**: Package manager and task runner for local development, builds, search index generation, and type-checking.
+- **TypeScript**: Primary language for the app, interactive examples, scripts, and build configuration.
+- **Solid.js**: UI framework used for the application shell and all interactive example components.
+- **@solidjs/router**: Client-side routing for the docs site, with lazy-loaded page modules.
+- **MDX**: Content format for documentation pages so prose and Solid components can live in the same file.
+- **Vite**: Development server and production bundler.
+- **vite-plugin-solid**: Integrates Solid.js compilation into the Vite build.
+- **Vanilla Extract**: Zero-runtime CSS system used for theme tokens and component-scoped styles.
+- **@ark-ui/solid**: Headless UI primitives used for accessible interactive components where needed.
+- **Phosphor SVG assets**: Prefer Phosphor icon assets, such as `command.svg`, for interface glyphs instead of ad hoc Unicode symbols when an icon is needed.
+- **Shiki**: Syntax highlighting for rendered code blocks.
+- **MiniSearch**: Client-side search indexing and lookup for docs search.
+- **remark-gfm**: Adds GitHub Flavored Markdown support to MDX content.
+- **sats-connect**: The SDK being documented and exercised by the interactive examples.
+- **Prettier**: Code and content formatter for the repository.
