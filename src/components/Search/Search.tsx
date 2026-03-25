@@ -12,6 +12,7 @@ import {
   onCleanup,
   onMount,
 } from "solid-js";
+import { Portal } from "solid-js/web";
 import {
   searchDocuments,
   type SearchDocument,
@@ -221,85 +222,90 @@ export const Search = () => {
         open={open()}
         onOpenChange={(details) => setOpen(details.open)}
       >
-        <Dialog.Backdrop class={s.backdrop} />
-        <Dialog.Positioner class={s.positioner}>
-          <Dialog.Content class={s.content}>
-            <div class={s.header}>
-              <div class={s.headerText}>
-                <Dialog.Title class={s.title}>Search the docs</Dialog.Title>
-                <Dialog.Description class={s.description}>
-                  Search methods, guides, and API reference pages in real time.
-                </Dialog.Description>
-              </div>
-              <Dialog.CloseTrigger
-                class={s.closeButton}
-                aria-label="Close search"
-              >
-                Esc
-              </Dialog.CloseTrigger>
-            </div>
-
-            <div class={s.body}>
-              <div class={s.inputRow}>
-                <span class={s.inputIcon} innerHTML={magnifyingGlassSvg} />
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={query()}
-                  onInput={(event) => setQuery(event.currentTarget.value)}
-                  class={s.input}
-                  placeholder="Search methods, wallets, examples, and guides"
-                  aria-label="Search documentation"
-                />
-              </div>
-
-              <div class={s.resultsSummary}>
-                <span class={s.resultsCount}>{resultSummary()}</span>
-                <span class={s.subtle}>Press Esc to close</span>
-              </div>
-
-              <div class={s.resultsPanel}>
-                <Show
-                  when={results().length > 0}
-                  fallback={
-                    <div class={s.emptyState}>
-                      <div class={s.emptyTitle}>No matching pages</div>
-                      <div class={s.emptyBody}>
-                        Try a method name, wallet capability, or a keyword from
-                        the response fields.
-                      </div>
-                    </div>
-                  }
+        <Portal>
+          <Dialog.Backdrop class={s.backdrop} />
+          <Dialog.Positioner class={s.positioner}>
+            <Dialog.Content class={s.content}>
+              <div class={s.header}>
+                <div class={s.headerText}>
+                  <Dialog.Title class={s.title}>Search the docs</Dialog.Title>
+                  <Dialog.Description class={s.description}>
+                    Search methods, guides, and API reference pages in real
+                    time.
+                  </Dialog.Description>
+                </div>
+                <Dialog.CloseTrigger
+                  class={s.closeButton}
+                  aria-label="Close search"
                 >
-                  <For each={results()}>
-                    {(result) => (
-                      <A
-                        href={result.path}
-                        class={s.resultLink}
-                        onClick={() => setOpen(false)}
-                      >
-                        <div class={s.resultHeader}>
-                          <span class={s.resultTitle}>{result.title}</span>
-                          <span class={s.resultSection}>{result.section}</span>
-                        </div>
-                        <div class={s.resultExcerpt}>{result.excerpt}</div>
-                        <div class={s.resultMeta}>
-                          <span>{result.path}</span>
-                          <Show when={result.headings[0]}>
-                            <span>•</span>
-                            <span class={s.resultHeading}>
-                              {result.headings[0]}
-                            </span>
-                          </Show>
-                        </div>
-                      </A>
-                    )}
-                  </For>
-                </Show>
+                  Esc
+                </Dialog.CloseTrigger>
               </div>
-            </div>
-          </Dialog.Content>
-        </Dialog.Positioner>
+
+              <div class={s.body}>
+                <div class={s.inputRow}>
+                  <span class={s.inputIcon} innerHTML={magnifyingGlassSvg} />
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={query()}
+                    onInput={(event) => setQuery(event.currentTarget.value)}
+                    class={s.input}
+                    placeholder="Search methods, wallets, examples, and guides"
+                    aria-label="Search documentation"
+                  />
+                </div>
+
+                <div class={s.resultsSummary}>
+                  <span class={s.resultsCount}>{resultSummary()}</span>
+                  <span class={s.subtle}>Press Esc to close</span>
+                </div>
+
+                <div class={s.resultsPanel}>
+                  <Show
+                    when={results().length > 0}
+                    fallback={
+                      <div class={s.emptyState}>
+                        <div class={s.emptyTitle}>No matching pages</div>
+                        <div class={s.emptyBody}>
+                          Try a method name, wallet capability, or a keyword
+                          from the response fields.
+                        </div>
+                      </div>
+                    }
+                  >
+                    <For each={results()}>
+                      {(result) => (
+                        <A
+                          href={result.path}
+                          class={s.resultLink}
+                          onClick={() => setOpen(false)}
+                        >
+                          <div class={s.resultHeader}>
+                            <span class={s.resultTitle}>{result.title}</span>
+                            <span class={s.resultSection}>
+                              {result.section}
+                            </span>
+                          </div>
+                          <div class={s.resultExcerpt}>{result.excerpt}</div>
+                          <div class={s.resultMeta}>
+                            <span>{result.path}</span>
+                            <Show when={result.headings[0]}>
+                              <span>•</span>
+                              <span class={s.resultHeading}>
+                                {result.headings[0]}
+                              </span>
+                            </Show>
+                          </div>
+                        </A>
+                      )}
+                    </For>
+                  </Show>
+                </div>
+              </div>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
       </Dialog.Root>
     </>
   );
