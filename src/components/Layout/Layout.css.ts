@@ -41,7 +41,6 @@ export const sidebarHeader = style({
   borderBottom: `1px solid ${vars.color.border}`,
   display: "flex",
   alignItems: "center",
-  gap: vars.space.sm,
 });
 
 export const sidebarSearch = style({
@@ -55,15 +54,11 @@ export const sidebarSearch = style({
   },
 });
 
-export const logoText = style({
-  fontSize: vars.fontSize.lg,
-  fontWeight: 700,
-  color: vars.color.text,
-  letterSpacing: "-0.02em",
-});
-
-export const logoAccent = style({
-  color: vars.color.accent,
+export const logoImage = style({
+  display: "block",
+  width: "100%",
+  maxWidth: 168,
+  height: "auto",
 });
 
 export const titleGroup = style({
