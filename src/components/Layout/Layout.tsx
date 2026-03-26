@@ -19,6 +19,7 @@ import * as s from "./Layout.css";
 
 const basePath = (import.meta.env.BASE_URL ?? "/").replace(/\/$/, "");
 const iconSrc = `${import.meta.env.BASE_URL}sats-connect-icon.png`;
+const logoSrc = `${import.meta.env.BASE_URL}sats-connect-logo.svg`;
 
 function truncateAddress(address: string): string {
   if (address.length <= 12) return address;
@@ -247,9 +248,7 @@ export const Layout: ParentComponent = (props) => {
     <div class={s.layoutContainer}>
       <nav class={`${s.sidebar} ${menuOpen() ? s.sidebarOpen : ""}`}>
         <div class={s.sidebarHeader}>
-          <span class={s.logoText}>
-            <span class={s.logoAccent}>Sats</span> Connect
-          </span>
+          <img src={logoSrc} alt="Sats Connect" class={s.logoImage} />
         </div>
         <Show when={showSidebarSearch()}>
           <div class={s.sidebarSearch}>
