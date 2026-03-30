@@ -48,6 +48,37 @@ type NavSection = {
   items: NavItem[];
 };
 
+const quickLinks: NavItem[] = [
+  {
+    label: "App Template",
+    href: "https://github.com/secretkeylabs/sats-connect-example",
+  },
+  {
+    label: "Demo App",
+    href: "https://github.com/secretkeylabs/dapp-cookie-cutter",
+  },
+  {
+    label: "Changelog",
+    href: "https://github.com/secretkeylabs/sats-connect/releases",
+  },
+  {
+    label: "GitHub Issues",
+    href: "https://github.com/secretkeylabs/sats-connect/issues",
+  },
+  {
+    label: "Developer Forum",
+    href: "https://discord.gg/tN84HhSDrz",
+  },
+  {
+    label: "NPM Package",
+    href: "https://www.npmjs.com/package/sats-connect",
+  },
+  {
+    label: "BIP322",
+    href: "https://bips.xyz/322",
+  },
+];
+
 const navigation: NavSection[] = [
   {
     title: "Getting Started",
@@ -300,6 +331,20 @@ export const Layout: ParentComponent = (props) => {
             ))}
           </div>
         ))}
+        <div class={s.navSection}>
+          <div class={s.navSectionTitle}>Quick Links</div>
+          {quickLinks.map((item) => (
+            <a
+              href={item.href}
+              class={s.navLink}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
       </nav>
 
       <Show when={menuOpen()}>
