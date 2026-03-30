@@ -1,0 +1,45 @@
+import { Callout, ParamTable } from "../components/Mdx/Mdx";
+import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+import CODE from "./examples/snippets/wallet-events.ts?raw";
+
+# Xverse Wallet Events
+
+Use <code>Wallet.addListener()</code> to keep your UI in sync with account, network, and disconnect changes after the user has connected.
+
+<Callout type="info">
+  The shipped event names in <code>sats-connect@4.2.1</code> are
+  <code>accountChange</code>, <code>networkChange</code>, and
+  <code>disconnect</code>.
+</Callout>
+
+## Example
+
+<CodeBlock code={CODE} lang="typescript" title="Listen to wallet events" />
+
+## Available events
+
+<ParamTable
+  params={[
+    {
+      name: "accountChange",
+      type: "Wallet event",
+      required: true,
+      description:
+        "Fires when the connected account changes. The payload can include updated addresses.",
+    },
+    {
+      name: "networkChange",
+      type: "Wallet event",
+      required: true,
+      description:
+        "Fires when the active network changes. The payload includes Bitcoin and Stacks network data, plus optional addresses.",
+    },
+    {
+      name: "disconnect",
+      type: "Wallet event",
+      required: true,
+      description:
+        "Fires when the wallet disconnects your app or when your app clears the connection state.",
+    },
+  ]}
+/>

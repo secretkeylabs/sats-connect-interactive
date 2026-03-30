@@ -1,0 +1,34 @@
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { ChangeNetworkExample } from "../examples/ChangeNetworkExample";
+
+# wallet_changeNetwork
+
+Use the <code>wallet_changeNetwork</code> method to switch the active Bitcoin network in the connected wallet.
+
+<Callout type="info">
+  In <code>sats-connect@4.2.1</code>, this method accepts a Bitcoin network
+  name. If your wallet has assigned ids to custom networks, use
+  <code>wallet_changeNetworkById</code> for id-based switching.
+</Callout>
+
+## Parameters
+
+<ParamTable
+  params={[
+    {
+      name: "name",
+      type: "BitcoinNetworkType",
+      required: true,
+      description:
+        "Bitcoin network to switch to, such as Mainnet, Testnet, Signet, or Regtest.",
+    },
+  ]}
+/>
+
+## Try it
+
+<ChangeNetworkExample />
+
+## Response
+
+Returns <code>null</code> on success.

@@ -2,14 +2,14 @@ import { Callout } from "../components/Mdx/Mdx";
 
 # Wallet Providers
 
-Sats Connect lets your app connect with a variety of Bitcoin, Spark, Starknet & Stacks wallets:
+Sats Connect lets your app connect with a variety of Bitcoin, Spark, Starknet, and Stacks wallets:
 
 - The [Xverse](https://www.xverse.app/) browser extension and mobile in-app browser
 - The Unisat browser extension
 - 🔜 Any Bitcoin wallet which follows the [WBIP004](https://wbips.netlify.app/wbips/WBIP004) standard
 - 🔜 Support for more Bitcoin, Spark, Stacks & Starknet wallets coming soon
 
-When installed in your user's browser, the wallets listed above inject a wallet provider into the <code>window</code> of your application. Sats Connect detects the wallet provider and lets your app interact with it via the <code>Wallet</code> component and <code>Wallet.request</code> methods.
+When installed in your user's browser, compatible wallets inject provider metadata and request methods into the <code>window</code> of your application. Sats Connect can inspect those providers directly through [getProviders & getProviderById](/wallet-providers/provider-discovery), or it can manage provider selection for the user through <code>Wallet.request</code>.
 
 ## Xverse Wallet Provider
 
@@ -28,7 +28,12 @@ The Unisat browser extension injects a <code>window.unisat</code> object into th
 
 Sats Connect will soon detect wallet extensions that inject their provider information under <code>window.btc_providers</code>, following the [WBIP004](https://wbips.netlify.app/wbips/WBIP004) standard, and let you interact with them via the standard <code>Wallet.request</code> methods.
 
+## Provider Discovery
+
+Use [getProviders & getProviderById](/wallet-providers/provider-discovery) to inspect installed providers and [getInfo](/bitcoin/get-info) to read wallet metadata such as version, platform, and supported methods.
+
 <Callout type="info">
-  If no wallet extension is detected, Sats Connect will show a wallet selection
-  prompt guiding the user to install a supported wallet.
+  If no compatible provider is detected, discovery helpers will return an empty
+  list and request flows may fall back to wallet selection or installation
+  guidance.
 </Callout>

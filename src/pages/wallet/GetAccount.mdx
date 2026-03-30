@@ -36,7 +36,13 @@ Use the <code>wallet_getAccount</code> method to retrieve account information fo
       type: "Address[]",
       required: true,
       description:
-        "Array of address objects with address, publicKey, purpose, addressType, and network fields.",
+        "Array of address objects with address, publicKey, purpose, addressType, and walletType fields.",
+    },
+    {
+      name: "network",
+      type: "object",
+      required: true,
+      description: "Network configuration for Bitcoin, Stacks, and Spark.",
     },
   ]}
 />

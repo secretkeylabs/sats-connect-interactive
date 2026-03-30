@@ -1,0 +1,61 @@
+import { Callout, ParamTable } from "../components/Mdx/Mdx";
+import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+import CODE from "./examples/snippets/provider-discovery.ts?raw";
+
+# getProviders & getProviderById
+
+Use <code>getProviders()</code> to inspect the wallet providers currently available in the browser, and <code>getProviderById()</code> when you want the raw provider object for one specific wallet.
+
+<Callout type="info">
+  These helpers do not require account permissions. They only inspect provider
+  metadata already injected into the page.
+</Callout>
+
+## Example
+
+<CodeBlock code={CODE} lang="typescript" title="Detect installed providers" />
+
+## Provider metadata
+
+<ParamTable
+  params={[
+    {
+      name: "id",
+      type: "string",
+      required: true,
+      description:
+        "Stable provider identifier used by discovery and default-provider helpers.",
+    },
+    {
+      name: "name",
+      type: "string",
+      required: true,
+      description: "Human-readable wallet name.",
+    },
+    {
+      name: "icon",
+      type: "string",
+      required: true,
+      description: "Wallet icon URL or data URI.",
+    },
+    {
+      name: "methods",
+      type: "string[]",
+      required: false,
+      description:
+        "Optional list of methods the provider reports as supported.",
+    },
+    {
+      name: "webUrl / store URLs",
+      type: "string",
+      required: false,
+      description: "Optional wallet website and installation links.",
+    },
+  ]}
+/>
+
+## Related topics
+
+- [Wallet Providers](/wallet-providers)
+- [Connect to other wallets](/connecting/other-wallets)
+- [Manage a default wallet](/connecting/default-wallet)

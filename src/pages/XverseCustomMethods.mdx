@@ -1,0 +1,26 @@
+import { Callout } from "../components/Mdx/Mdx";
+
+# Xverse Custom Methods
+
+The shipped <code>wallet\_\*</code> request surface extends the standard request methods with wallet lifecycle, permission, and network-management primitives.
+
+<Callout type="warning">
+  Not every provider implements every <code>wallet_*</code> method. If a wallet
+  does not support one, expect <code>METHOD_NOT_FOUND</code> or
+  <code>METHOD_NOT_SUPPORTED</code>.
+</Callout>
+
+## Currently documented wallet methods
+
+- [Connect Wallet](/connect)
+- [Disconnect Wallet](/disconnect)
+- [wallet_requestPermissions](/wallet/request-permissions)
+- [wallet_getCurrentPermissions](/wallet/get-current-permissions)
+- [wallet_renouncePermissions](/wallet/renounce-permissions)
+- [wallet_getAccount](/wallet/get-account)
+- [wallet_getWalletType](/wallet/get-wallet-type)
+- [wallet_getNetwork](/wallet/get-network)
+- [wallet_changeNetwork](/wallet/change-network)
+- [wallet_addNetwork](/wallet/add-network)
+
+The package also exports <code>wallet_changeNetworkById</code> for switching to a custom network by the id returned from <code>wallet_addNetwork</code>.

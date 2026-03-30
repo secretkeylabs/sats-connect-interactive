@@ -1,0 +1,79 @@
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { AddNetworkExample } from "../examples/AddNetworkExample";
+
+# wallet_addNetwork
+
+Use the <code>wallet_addNetwork</code> method to register a custom Bitcoin, Stacks, or Starknet network with the connected wallet.
+
+<Callout type="warning">
+  Support for adding custom networks depends on the wallet. The interactive
+  example uses sample local-network values that you should replace with your own
+  endpoints.
+</Callout>
+
+## Parameters
+
+<ParamTable
+  params={[
+    {
+      name: "chain",
+      type: '"bitcoin" | "stacks" | "starknet"',
+      required: true,
+      description: "Chain family for the custom network.",
+    },
+    {
+      name: "type",
+      type: "BitcoinNetworkType | StacksNetworkType | StarknetNetworkType",
+      required: true,
+      description: "Built-in network classification for the custom network.",
+    },
+    {
+      name: "name",
+      type: "string",
+      required: true,
+      description: "Display name shown by the wallet.",
+    },
+    {
+      name: "rpcUrl",
+      type: "string",
+      required: true,
+      description: "Primary RPC endpoint for the network.",
+    },
+    {
+      name: "blockExplorerUrl",
+      type: "string",
+      required: false,
+      description: "Optional block explorer base URL.",
+    },
+    {
+      name: "switch",
+      type: "boolean",
+      required: false,
+      description:
+        "Whether the wallet should switch to the new network immediately.",
+    },
+    {
+      name: "rpcFallbackUrl / indexerUrl",
+      type: "string",
+      required: false,
+      description: "Optional Bitcoin-specific fallback or indexer endpoints.",
+    },
+  ]}
+/>
+
+## Try it
+
+<AddNetworkExample />
+
+## Response
+
+<ParamTable
+  params={[
+    {
+      name: "id",
+      type: "string",
+      required: true,
+      description: "Wallet-assigned identifier for the custom network.",
+    },
+  ]}
+/>

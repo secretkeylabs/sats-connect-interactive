@@ -3,7 +3,9 @@ import { ConnectExample } from "./examples/ConnectExample";
 
 # Connect Wallet
 
-An app can connect to the user's wallet using <code>wallet_connect</code>. This method grants read permissions on the account selected by the user and returns commonly used data about the account, such as addresses and current network.
+Use <code>wallet_connect</code> when you want a single request that both asks the user to connect and returns the account data your app usually needs right away.
+
+On success, the method grants read permissions for the selected account and returns the account id, addresses, wallet type, and active network state.
 
 <Callout type="info">
   If the user has already granted permissions, no connection request popup will
@@ -71,7 +73,13 @@ On success, <code>wallet_connect</code> returns an object containing the user's 
       name: "network",
       type: "object",
       required: true,
-      description: "Network configuration for Bitcoin and Stacks.",
+      description: "Network configuration for Bitcoin, Stacks, and Spark.",
     },
   ]}
 />
+
+## After connecting
+
+- Use [wallet_getAccount](/wallet/get-account) when you need the current connected account again later.
+- Use [wallet permissions](/wallet/permissions) to understand when read access is reused versus re-requested.
+- Use [wallet events](/wallet/events) so your UI stays in sync when the user changes accounts, networks, or disconnects.

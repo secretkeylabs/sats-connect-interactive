@@ -1,0 +1,25 @@
+import { Callout } from "../components/Mdx/Mdx";
+import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+import CODE from "./examples/snippets/manage-default-wallet.ts?raw";
+
+# Manage a user's default wallet
+
+Sats Connect stores a default provider id once the user has selected a wallet. Future <code>Wallet.request(...)</code> calls reuse that provider until you change or clear it.
+
+<Callout type="info">
+  In most apps you do not need to manage this manually. The default provider is
+  selected automatically during request flows, and{" "}
+  <code>Wallet.disconnect()</code>
+  clears it when the user signs out.
+</Callout>
+
+## Example
+
+<CodeBlock code={CODE} lang="typescript" title="Default provider helpers" />
+
+## Available helpers
+
+- <code>getDefaultProvider()</code> reads the stored provider id
+- <code>setDefaultProvider(providerId)</code> forces future requests to use a
+  specific provider
+- <code>removeDefaultProvider()</code> clears the stored selection

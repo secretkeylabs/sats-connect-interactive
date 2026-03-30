@@ -1,0 +1,37 @@
+import { Callout } from "../components/Mdx/Mdx";
+
+# Wallet Methods
+
+The docs in this site cover two related method families:
+
+- standard request methods for Bitcoin, Stacks, Spark, Runes, and Ordinals
+- <code>wallet_*</code> methods for connection, permissions, wallet inspection,
+  and network management
+
+<Callout type="info">
+  Use [request methods](/wallet/request-methods) for the transport and response
+  model. Use [Xverse custom methods](/wallet/custom-methods) for the
+  wallet-specific extensions currently documented in this repo.
+</Callout>
+
+## Wallet lifecycle and permissions
+
+- [Connect Wallet](/connect)
+- [Disconnect Wallet](/disconnect)
+- [wallet_requestPermissions](/wallet/request-permissions)
+- [wallet_getCurrentPermissions](/wallet/get-current-permissions)
+- [wallet_renouncePermissions](/wallet/renounce-permissions)
+
+## Wallet state and network management
+
+- [wallet_getAccount](/wallet/get-account)
+- [wallet_getWalletType](/wallet/get-wallet-type)
+- [wallet_getNetwork](/wallet/get-network)
+- [wallet_changeNetwork](/wallet/change-network)
+- [wallet_addNetwork](/wallet/add-network)
+
+## Method families
+
+- [Bitcoin methods](/bitcoin/get-info)
+- [Stacks methods](/stacks/get-addresses)
+- [Spark methods](/spark/get-addresses)

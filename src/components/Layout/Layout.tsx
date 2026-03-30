@@ -48,19 +48,73 @@ type NavSection = {
   items: NavItem[];
 };
 
+const quickLinks: NavItem[] = [
+  {
+    label: "App Template",
+    href: "https://github.com/secretkeylabs/sats-connect-example",
+  },
+  {
+    label: "Demo App",
+    href: "https://github.com/secretkeylabs/dapp-cookie-cutter",
+  },
+  {
+    label: "Changelog",
+    href: "https://github.com/secretkeylabs/sats-connect/releases",
+  },
+  {
+    label: "GitHub Issues",
+    href: "https://github.com/secretkeylabs/sats-connect/issues",
+  },
+  {
+    label: "Developer Forum",
+    href: "https://discord.gg/tN84HhSDrz",
+  },
+  {
+    label: "NPM Package",
+    href: "https://www.npmjs.com/package/sats-connect",
+  },
+  {
+    label: "BIP322",
+    href: "https://bips.xyz/322",
+  },
+];
+
 const navigation: NavSection[] = [
   {
     title: "Getting Started",
     items: [
       { label: "Introduction", href: "/" },
       { label: "Wallet Providers", href: "/wallet-providers" },
+      {
+        label: "getProviders & getProviderById",
+        href: "/wallet-providers/provider-discovery",
+      },
     ],
   },
   {
     title: "Connecting",
     items: [
+      { label: "Connecting to the Wallet", href: "/connecting" },
       { label: "Connect Wallet", href: "/connect" },
+      {
+        label: "Connect to Other Wallets",
+        href: "/connecting/other-wallets",
+      },
+      {
+        label: "Manage Default Wallet",
+        href: "/connecting/default-wallet",
+      },
       { label: "Disconnect", href: "/disconnect" },
+    ],
+  },
+  {
+    title: "Wallet Guides",
+    items: [
+      { label: "Wallet Methods", href: "/wallet-methods" },
+      { label: "Request Methods", href: "/wallet/request-methods" },
+      { label: "Xverse Custom Methods", href: "/wallet/custom-methods" },
+      { label: "Xverse Wallet Permissions", href: "/wallet/permissions" },
+      { label: "Xverse Wallet Events", href: "/wallet/events" },
     ],
   },
   {
@@ -88,6 +142,10 @@ const navigation: NavSection[] = [
       { label: "stx_signMessage", href: "/stacks/sign-message" },
       { label: "stx_getAddresses", href: "/stacks/get-addresses" },
       { label: "stx_getAccounts", href: "/stacks/get-accounts" },
+      {
+        label: "stx_signStructuredMessage",
+        href: "/stacks/sign-structured-message",
+      },
       { label: "stx_signTransaction", href: "/stacks/sign-transaction" },
       { label: "stx_callContract", href: "/stacks/call-contract" },
       { label: "stx_deployContract", href: "/stacks/deploy-contract" },
@@ -121,6 +179,8 @@ const navigation: NavSection[] = [
         href: "/wallet/renounce-permissions",
       },
       { label: "wallet_getNetwork", href: "/wallet/get-network" },
+      { label: "wallet_changeNetwork", href: "/wallet/change-network" },
+      { label: "wallet_addNetwork", href: "/wallet/add-network" },
     ],
   },
 ];
@@ -271,6 +331,20 @@ export const Layout: ParentComponent = (props) => {
             ))}
           </div>
         ))}
+        <div class={s.navSection}>
+          <div class={s.navSectionTitle}>Quick Links</div>
+          {quickLinks.map((item) => (
+            <a
+              href={item.href}
+              class={s.navLink}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
       </nav>
 
       <Show when={menuOpen()}>

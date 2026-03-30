@@ -1,0 +1,29 @@
+import { Callout } from "../components/Mdx/Mdx";
+
+# Connecting to the wallet
+
+Sats Connect supports two complementary connection styles:
+
+- <code>wallet_connect</code> for a direct Xverse-style connection flow
+- <code>Wallet.request(...)</code> for multi-wallet flows that can prompt the
+  user to pick a compatible provider first
+
+<Callout type="info">
+  A successful connection gives your app read access for the selected wallet
+  account. Your UI should still listen for wallet events because the user can
+  change accounts, networks, or disconnect after the initial handshake.
+</Callout>
+
+## Choose a flow
+
+- Use [Connect Wallet](/connect) when you want addresses, account metadata, and network state returned immediately.
+- Use [Connect to other wallets](/connecting/other-wallets) when your app supports multiple compatible providers.
+- Use [Manage a default wallet](/connecting/default-wallet) if you want explicit control over which provider future requests should use.
+
+## After the first connection
+
+- [Wallet permissions](/wallet/permissions)
+- [Wallet events](/wallet/events)
+- [wallet_getAccount](/wallet/get-account)
+- [wallet_getNetwork](/wallet/get-network)
+- [Disconnect Wallet](/disconnect)

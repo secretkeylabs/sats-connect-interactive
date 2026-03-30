@@ -1,0 +1,69 @@
+import { Callout, ParamTable } from "../components/Mdx/Mdx";
+import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+import CODE from "./examples/snippets/request-with-permissions.ts?raw";
+
+# request methods
+
+Use <code>request</code> or <code>Wallet.request</code> to call the JSON-RPC methods documented throughout this site.
+
+- Use the named <code>request</code> export when you already know which provider should handle the call.
+- Use the default <code>Wallet</code> export when you want Sats Connect to reuse or select a provider for the user.
+
+<Callout type="info">
+  The interactive examples in this repo generally use{" "}
+  <code>Wallet.request</code>
+  or <code>request</code> from <code>sats-connect</code>, both of which
+  ultimately return the same <code>{"{ status, result | error }"}</code>{" "}
+  response shape.
+</Callout>
+
+## Response format
+
+<ParamTable
+  params={[
+    {
+      name: "status",
+      type: '"success" | "error"',
+      required: true,
+      description: "Indicates which branch of the response is present.",
+    },
+    {
+      name: "result",
+      type: "unknown",
+      required: false,
+      description: "Method-specific payload returned when status is success.",
+    },
+    {
+      name: "error",
+      type: "RpcError",
+      required: false,
+      description:
+        "JSON-RPC compatible error object returned when status is error.",
+    },
+  ]}
+/>
+
+## Common error codes
+
+- <code>PARSE_ERROR</code> (<code>-32700</code>) for invalid JSON
+- <code>INVALID_REQUEST</code> (<code>-32600</code>) for malformed request
+  objects
+- <code>METHOD_NOT_FOUND</code> (<code>-32601</code>) when the method is
+  unavailable
+- <code>INVALID_PARAMS</code> (<code>-32602</code>) when parameters fail
+  validation
+- <code>INTERNAL_ERROR</code> (<code>-32603</code>) for wallet-side failures
+- <code>USER_REJECTION</code> (<code>-32000</code>) when the user cancels or
+  rejects
+- <code>METHOD_NOT_SUPPORTED</code> (<code>-32001</code>) when the provider
+  cannot perform the method for the selected address or asset
+- <code>ACCESS_DENIED</code> (<code>-32002</code>) when your app lacks the
+  required permission
+
+## Permission-aware requests
+
+<CodeBlock
+  code={CODE}
+  lang="typescript"
+  title="Retry after requesting permissions"
+/>

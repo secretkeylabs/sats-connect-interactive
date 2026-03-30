@@ -3,7 +3,7 @@ import { RequestPermissionsExample } from "../examples/RequestPermissionsExample
 
 # wallet_requestPermissions
 
-Use the <code>wallet_requestPermissions</code> method to explicitly request permissions from the user's wallet. This is an alternative to <code>wallet_connect</code> that focuses solely on obtaining permissions without returning address data.
+Use the <code>wallet_requestPermissions</code> method to explicitly request wallet permissions without also returning account data.
 
 <Callout type="info">
   In most cases, using <code>wallet_connect</code> is preferred as it combines
@@ -12,10 +12,36 @@ Use the <code>wallet_requestPermissions</code> method to explicitly request perm
   the permission flow.
 </Callout>
 
+## Parameters
+
+<ParamTable
+  params={[
+    {
+      name: "[].type",
+      type: '"account" | "wallet"',
+      required: false,
+      description: "Permission family to request.",
+    },
+    {
+      name: "[].resourceId",
+      type: "string",
+      required: false,
+      description: "Specific wallet or account resource identifier.",
+    },
+    {
+      name: "[].actions",
+      type: "object",
+      required: false,
+      description:
+        "Requested actions, such as account read access or wallet readNetwork access.",
+    },
+  ]}
+/>
+
 ## Try it
 
 <RequestPermissionsExample />
 
 ## Response
 
-On success, the method returns the list of permissions granted by the user.
+On success, the method returns <code>true</code>.

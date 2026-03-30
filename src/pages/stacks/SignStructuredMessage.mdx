@@ -1,0 +1,61 @@
+import { Callout, ParamTable } from "../../components/Mdx/Mdx";
+import { StxSignStructuredMessageExample } from "../examples/StxSignStructuredMessageExample";
+
+# stx_signStructuredMessage
+
+Use the <code>stx_signStructuredMessage</code> method to request a signature for structured Stacks payloads.
+
+<Callout type="info">
+  The wallet treats <code>domain</code> and <code>message</code> as opaque
+  strings. Your app is responsible for choosing and validating the structured
+  format it wants users to sign.
+</Callout>
+
+## Parameters
+
+<ParamTable
+  params={[
+    {
+      name: "domain",
+      type: "string",
+      required: true,
+      description:
+        "Domain or namespace associated with the payload being signed.",
+    },
+    {
+      name: "message",
+      type: "string",
+      required: true,
+      description: "Structured payload, serialized as a string.",
+    },
+    {
+      name: "publicKey",
+      type: "string",
+      required: false,
+      description: "Optional public key hint to sign with.",
+    },
+  ]}
+/>
+
+## Try it
+
+<StxSignStructuredMessageExample />
+
+## Response
+
+<ParamTable
+  params={[
+    {
+      name: "signature",
+      type: "string",
+      required: true,
+      description: "Signature of the structured payload.",
+    },
+    {
+      name: "publicKey",
+      type: "string",
+      required: true,
+      description: "Public key returned by the wallet as a hex string.",
+    },
+  ]}
+/>
