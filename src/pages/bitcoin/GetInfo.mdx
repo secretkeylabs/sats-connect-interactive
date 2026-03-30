@@ -3,10 +3,12 @@ import { GetInfoExample } from "../examples/GetInfoExample";
 
 # getInfo
 
-Use the <code>getInfo</code> method to retrieve information about the connected wallet, such as its version, platform, and supported methods.
+Use the <code>getInfo</code> method to retrieve metadata about the selected wallet provider, such as its version, platform, and supported request methods.
 
 <Callout type="info">
-  Your app must first be connected to the wallet. No parameters are required.
+  No prior account permissions are required. If no provider has been selected
+  yet, calling <code>Wallet.request("getInfo", null)</code> may first prompt the
+  user to choose a compatible wallet.
 </Callout>
 
 ## Try it
@@ -26,6 +28,13 @@ The <code>getInfo</code> method returns an object with wallet metadata:
       description: "Version of the wallet.",
     },
     {
+      name: "platform",
+      type: '"web" | "mobile"',
+      required: false,
+      description:
+        "Platform the wallet is running on, when provided by the wallet.",
+    },
+    {
       name: "methods",
       type: "string[]",
       required: false,
@@ -34,8 +43,8 @@ The <code>getInfo</code> method returns an object with wallet metadata:
     {
       name: "supports",
       type: "string[]",
-      required: false,
-      description: "Features supported by the wallet.",
+      required: true,
+      description: "List of supported standards or capability identifiers.",
     },
   ]}
 />

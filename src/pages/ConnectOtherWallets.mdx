@@ -1,0 +1,27 @@
+import { Callout } from "../components/Mdx/Mdx";
+import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+import CODE from "./examples/snippets/connect-other-wallets.ts?raw";
+
+# Connect to other wallets
+
+Use the default <code>Wallet</code> export from <code>sats-connect</code> when you want the SDK to route requests through the user's preferred compatible wallet.
+
+If a default provider is already stored, <code>Wallet.request(...)</code> will reuse it. If no provider has been chosen yet, the SDK can prompt the user to select one from the installed wallets it detects.
+
+<CodeBlock
+  code={CODE}
+  lang="typescript"
+  title="Wallet.request across providers"
+/>
+
+<Callout type="info">
+  The request itself can be any supported method, but permission-gated reads
+  such as <code>getAccounts</code>, <code>getAddresses</code>, or
+  <code>wallet_connect</code> make the connection flow explicit.
+</Callout>
+
+## Related topics
+
+- [Wallet Providers](/wallet-providers)
+- [getProviders & getProviderById](/wallet-providers/provider-discovery)
+- [Manage a default wallet](/connecting/default-wallet)

@@ -54,13 +54,36 @@ const navigation: NavSection[] = [
     items: [
       { label: "Introduction", href: "/" },
       { label: "Wallet Providers", href: "/wallet-providers" },
+      {
+        label: "getProviders & getProviderById",
+        href: "/wallet-providers/provider-discovery",
+      },
     ],
   },
   {
     title: "Connecting",
     items: [
+      { label: "Connecting to the Wallet", href: "/connecting" },
       { label: "Connect Wallet", href: "/connect" },
+      {
+        label: "Connect to Other Wallets",
+        href: "/connecting/other-wallets",
+      },
+      {
+        label: "Manage Default Wallet",
+        href: "/connecting/default-wallet",
+      },
       { label: "Disconnect", href: "/disconnect" },
+    ],
+  },
+  {
+    title: "Wallet Guides",
+    items: [
+      { label: "Wallet Methods", href: "/wallet-methods" },
+      { label: "Request Methods", href: "/wallet/request-methods" },
+      { label: "Xverse Custom Methods", href: "/wallet/custom-methods" },
+      { label: "Xverse Wallet Permissions", href: "/wallet/permissions" },
+      { label: "Xverse Wallet Events", href: "/wallet/events" },
     ],
   },
   {
@@ -88,6 +111,10 @@ const navigation: NavSection[] = [
       { label: "stx_signMessage", href: "/stacks/sign-message" },
       { label: "stx_getAddresses", href: "/stacks/get-addresses" },
       { label: "stx_getAccounts", href: "/stacks/get-accounts" },
+      {
+        label: "stx_signStructuredMessage",
+        href: "/stacks/sign-structured-message",
+      },
       { label: "stx_signTransaction", href: "/stacks/sign-transaction" },
       { label: "stx_callContract", href: "/stacks/call-contract" },
       { label: "stx_deployContract", href: "/stacks/deploy-contract" },
@@ -121,6 +148,8 @@ const navigation: NavSection[] = [
         href: "/wallet/renounce-permissions",
       },
       { label: "wallet_getNetwork", href: "/wallet/get-network" },
+      { label: "wallet_changeNetwork", href: "/wallet/change-network" },
+      { label: "wallet_addNetwork", href: "/wallet/add-network" },
     ],
   },
 ];

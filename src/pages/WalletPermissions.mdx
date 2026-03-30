@@ -1,0 +1,38 @@
+import { Callout } from "../components/Mdx/Mdx";
+import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+import CODE from "./examples/snippets/request-with-permissions.ts?raw";
+
+# Xverse Wallet Permissions
+
+Permissions let your app read account or wallet state without prompting the user again on every request.
+
+<Callout type="info">
+  In <code>sats-connect@4.2.1</code>, <code>wallet_connect</code> is still the
+  simplest way to request the initial account-read permission. Use
+  <code>wallet_requestPermissions</code> when you want to trigger or retry the
+  permission flow explicitly.
+</Callout>
+
+## Methods that benefit from read permissions
+
+- [wallet_getAccount](/wallet/get-account)
+- [getAddresses](/bitcoin/get-addresses)
+- [getBalance](/bitcoin/get-balance)
+- [ord_getInscriptions](/bitcoin/get-inscriptions)
+- [runes_getBalance](/bitcoin/runes-get-balance)
+- [stx_getAccounts](/stacks/get-accounts)
+- [spark_getAddresses](/spark/get-addresses)
+- [spark_getBalance](/spark/get-balance)
+
+## Request permissions on demand
+
+<CodeBlock code={CODE} lang="typescript" title="Handle ACCESS_DENIED" />
+
+## Inspect or revoke permissions
+
+- [wallet_getCurrentPermissions](/wallet/get-current-permissions) shows the permissions currently granted to your app
+- [wallet_renouncePermissions](/wallet/renounce-permissions) clears them again
+
+## Signatures still prompt per request
+
+Bitcoin, Stacks, and Spark signing or transaction methods still require explicit user approval each time you call them.

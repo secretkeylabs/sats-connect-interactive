@@ -1,11 +1,28 @@
 import { Callout } from "../components/Mdx/Mdx";
 import { CodeBlock } from "../components/CodeBlock/CodeBlock";
+import disconnectRequestCode from "./examples/snippets/disconnect-request.ts?raw";
 import disconnectCode from "./examples/snippets/disconnect.ts?raw";
 import disconnectListenerCode from "./examples/snippets/disconnect-listener.ts?raw";
 
 # Disconnect Wallet
 
-To disconnect your app from the user's wallet, use the <code>wallet_renouncePermissions</code> method. This revokes all permissions previously granted by the user.
+The current SDK exposes two request-level ways to end a session:
+
+- <code>request("wallet_disconnect", null)</code>
+- <code>request("wallet_renouncePermissions", null)</code>
+
+The convenience helper <code>Wallet.disconnect()</code> currently wraps
+
+<code>wallet_renouncePermissions</code>, clears the stored provider id, and
+removes the default provider selection.
+
+## Disconnect via request
+
+<CodeBlock
+  code={disconnectRequestCode}
+  lang="typescript"
+  title="wallet_disconnect"
+/>
 
 <CodeBlock code={disconnectCode} lang="typescript" title="Disconnect" />
 
@@ -16,7 +33,7 @@ To disconnect your app from the user's wallet, use the <code>wallet_renouncePerm
 
 ## How it works
 
-Calling <code>Wallet.disconnect()</code> internally calls <code>wallet_renouncePermissions</code> and clears the stored provider ID. This ensures a clean disconnection.
+If you specifically want to revoke permissions without using the helper, see [wallet_renouncePermissions](/wallet/renounce-permissions).
 
 Users can also disconnect directly from their wallet UI. Your app should listen for the <code>disconnect</code> event to handle this case gracefully:
 
